@@ -22,6 +22,29 @@ a:hover{color:#9C7434}
 @keyframes cb-drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 @keyframes cb-slide{from{transform:translateX(-100%)}to{transform:none}}
 @keyframes cb-slide-r{from{transform:translateX(100%)}to{transform:none}}
+
+/* Sur telephone le carrousel best sellers calait ses cartes a gauche
+   (scroll-snap-align:start) : la carte active touchait le bord et rien
+   n'indiquait qu'il y en avait d'autres. On centre desormais la carte sur
+   laquelle le defilement s'arrete, et les marges laterales laissent depasser
+   un tiers de la voisine de chaque cote. Largeur choisie pour cela : une
+   carte de 56vw entre deux marges de 22vw, moins la gouttiere, donne
+   (22vw - 12px) de voisine visible, soit un bon tiers de 56vw a toutes les
+   largeurs de telephone. Seuil a 600px : au-dela on est sur tablette ou
+   fenetre etroite, ou il vaut mieux continuer a voir plusieurs cartes de
+   front. Les cartes etant stylees en ligne, !important est
+   necessaire pour reprendre la main ici. */
+@media (max-width:600px){
+  #bs-carousel{
+    padding-left:22vw !important;
+    padding-right:22vw !important;
+    gap:12px !important;
+  }
+  #bs-carousel>article{
+    flex:0 0 56vw !important;
+    scroll-snap-align:center !important;
+  }
+}
 </style>
 </helmet>
 
@@ -471,7 +494,7 @@ a:hover{color:#9C7434}
       <button onClick="{{ bsNext }}" aria-label="Suivant" style="width:46px;height:46px;border:1px solid #E3D4C5;background:#fff;color:#1E0A1A;font-size:15px;cursor:pointer" style-hover="border-color:#9C7434;color:#9C7434">›</button>
     </div>
   </div>
-  <div ref="{{ bsRef }}" style="max-width:1340px;margin:28px auto 0;padding:0 24px 34px;display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory">
+  <div id="bs-carousel" ref="{{ bsRef }}" style="max-width:1340px;margin:28px auto 0;padding:0 24px 34px;display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory">
 
     <article style="flex:0 0 clamp(238px,25vw,296px);min-width:0;scroll-snap-align:start;background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
       <div style="position:relative;aspect-ratio:4/5;background:#F5EDE3;overflow:hidden">
