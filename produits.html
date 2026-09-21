@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cassandra Beauty</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#FBF6F1;color:#1E0A1A;font-family:Jost,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
+::selection{background:#EEDCC5}
+@keyframes cb-drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+
+<div style="background:#5C1329;color:#EFE0CC">
+  <div style="max-width:1340px;margin:0 auto;padding:10px 20px;text-align:center;font-size:clamp(9.5px,1.05vw,11px);letter-spacing:.14em;text-transform:uppercase">
+    Trois mini-produits offerts dès 120 € d'achat
+  </div>
+</div>
+
+<header style="border-bottom:1px solid #EADFD3;background:#FBF6F1">
+  <div style="max-width:1340px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px">
+      <svg viewBox="0 0 40 40" aria-hidden="true" style="display:block;width:26px;height:26px;flex:0 0 auto">
+        <path d="M20 0 L23.2 16.8 L40 20 L23.2 23.2 L20 40 L16.8 23.2 L0 20 L16.8 16.8 Z" fill="#B8913D"></path>
+      </svg>
+      <span style="display:flex;flex-direction:column;gap:5px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);letter-spacing:.14em;text-transform:uppercase">Cassandra</span>
+        <span style="font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#9C7434">Beauty · Paris</span>
+      </span>
+    </a>
+    <a href="index.html" style="padding:13px 22px;border:1px solid #5C1329;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase">← Retour à la boutique</a>
+  </div>
+</header>
+
+<section style="padding:clamp(30px,4vw,54px) 24px clamp(20px,3vw,32px)">
+  <div style="max-width:1340px;margin:0 auto;display:flex;flex-direction:column;gap:14px">
+    <p style="margin:0;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9C7434">La collection</p>
+    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.6vw,56px);line-height:1.04">Tous les produits</h1>
+    <p style="margin:0;max-width:58ch;font-size:15px;line-height:1.75;color:#4E3A2E;text-wrap:pretty">Trois mini-produits offerts dès 120 € d'achat, glissés dans votre commande. D'autres références rejoignent la collection très bientôt.</p>
+  </div>
+</section>
+
+<section style="padding:0 24px clamp(44px,6vw,78px)">
+  <div style="max-width:1340px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px">
+
+    <article style="background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
+      <div style="position:relative;aspect-ratio:4/5;background:#F7E9EE;overflow:hidden">
+        <img src="./images/blush-poudre.jpg" alt="Blush poudre rosé dans son boîtier doré" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span style="position:absolute;top:0;left:0;padding:7px 12px;background:#5C1329;color:#DFC08A;font-size:9px;letter-spacing:.2em;text-transform:uppercase;pointer-events:none">Best seller</span>
+      </div>
+      <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1">
+        <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Joues</p>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Blush Poudre</h2>
+        <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">29,99 €</p>
+        <button data-nom="Blush Poudre" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+      </div>
+    </article>
+
+    <article style="background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
+      <div style="position:relative;aspect-ratio:4/5;background:#F6EBDD;overflow:hidden">
+        <img src="./images/bronzer.jpg" alt="Bronzer poudre dans son boîtier doré rond" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+      </div>
+      <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1">
+        <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Joues</p>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Bronzer Poudre</h2>
+        <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">29,99 €</p>
+        <button data-nom="Bronzer Poudre" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+      </div>
+    </article>
+
+    <article style="background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
+      <div style="position:relative;aspect-ratio:4/5;background:#FBEEDA;overflow:hidden">
+        <img src="./images/enlumineur.jpg" alt="Highlighter doré dans son boîtier carré" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+      </div>
+      <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1">
+        <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Joues</p>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Highlighter</h2>
+        <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">34,99 €</p>
+        <button data-nom="Highlighter" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+      </div>
+    </article>
+
+    <article style="background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
+      <div style="position:relative;aspect-ratio:4/5;background:#F7E9EE;overflow:hidden">
+        <img src="./images/gloss.jpg" alt="Trio de gloss Cassandra Beauty à capuchon doré" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+      </div>
+      <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1">
+        <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Lèvres</p>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Gloss Brillance</h2>
+        <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">22,99 €</p>
+        <button data-nom="Gloss Brillance" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+      </div>
+    </article>
+
+    <article style="background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
+      <div style="position:relative;aspect-ratio:4/5;background:#F3EADF;overflow:hidden">
+        <img src="./images/base-grippy.jpg" alt="Tube de base préparatrice Base Grippy bordeaux et doré" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+      </div>
+      <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1">
+        <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Teint</p>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Base Grippy</h2>
+        <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">25,99 €</p>
+        <button data-nom="Base Grippy" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+      </div>
+    </article>
+
+    <article style="background:#F4EBE2;border:1px solid #EADFD3;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:30px 26px;min-height:240px">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:22px">Le Calendrier de l'Avent</p>
+      <p style="margin:0;font-size:14px;line-height:1.7;color:#6A5344">24 cases, valeur 420 €, à vous pour 149,99 €.</p>
+      <a href="calendrier.html" style="margin-top:6px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Voir la fiche →</a>
+    </article>
+  </div>
+</section>
+
+<footer style="background:#4A0F20;color:#8E7A6C;padding:28px 24px;text-align:center;font-size:11px;letter-spacing:.1em">
+  © 2026 Cassandra Beauty — Paris · <a href="index.html" style="color:#DFC08A">Retour à la boutique</a>
+</footer>
+
+<sc-if value="{{ toastVisible }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:80;padding:15px 28px;background:#5C1329;color:#EFE0CC;border:1px solid #9C7434;font-size:13px;animation:cb-drop .2s ease both">{{ toast }}</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { toast: "" };
+  componentWillUnmount() { clearTimeout(this._t); }
+  renderVals() {
+    return {
+      toast: this.state.toast,
+      toastVisible: this.state.toast !== "",
+      ajouter: (e) => {
+        this.setState({ toast: e.currentTarget.dataset.nom + " ajouté au panier" });
+        clearTimeout(this._t);
+        this._t = setTimeout(() => this.setState({ toast: "" }), 2000);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

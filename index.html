@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cassandra Beauty</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#FBF6F1;color:#1E0A1A;font-family:Jost,'Helvetica Neue',Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1E0A1A;text-decoration:none}
+a:hover{color:#9C7434}
+::selection{background:#EEDCC5}
+@keyframes cb-fade{from{opacity:0}to{opacity:1}}
+@keyframes cb-drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes cb-slide{from{transform:translateX(-100%)}to{transform:none}}
+@keyframes cb-slide-r{from{transform:translateX(100%)}to{transform:none}}
+</style>
+</helmet>
+
+<div style="background:#5C1329;color:#EFE0CC">
+  <div style="max-width:1340px;margin:0 auto;padding:10px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 26px;font-size:clamp(9.5px,1.05vw,11px);letter-spacing:.14em;text-transform:uppercase;line-height:1.5">
+    <sc-if value="{{ promoA }}" hint-placeholder-val="{{ true }}"><span style="text-align:center">−15 % et livraison offerte sur la 1<sup>re</sup> commande — code <span style="color:#DFC08A;letter-spacing:.24em">CASSANDRA15</span></span></sc-if>
+    <sc-if value="{{ promoB }}" hint-placeholder-val="{{ false }}"><span style="text-align:center">Trois mini-produits offerts dès 120 € d'achat</span></sc-if>
+  </div>
+</div>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(251,246,241,.96);backdrop-filter:blur(8px);border-bottom:1px solid #EADFD3">
+  <div style="max-width:1340px;margin:0 auto;padding:14px 24px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px">
+
+    <div style="justify-self:start;min-width:0;display:flex;align-items:center;gap:6px">
+      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ basculerMenu }}" aria-label="Ouvrir le menu" style="width:46px;height:46px;border:1px solid #E3D4C5;border-radius:50%;background:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px">
+          <span style="display:block;width:17px;height:1px;background:#5C1329"></span>
+          <span style="display:block;width:17px;height:1px;background:#5C1329"></span>
+          <span style="display:block;width:17px;height:1px;background:#5C1329"></span>
+        </button>
+      </sc-if>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+        <label style="display:flex;min-width:0;align-items:center;gap:9px;padding:11px 16px;border:1px solid #E3D4C5;border-radius:2px;background:#fff">
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" style="flex:0 0 auto"><circle cx="6" cy="6" r="4.4" fill="none" stroke="#9C7434" stroke-width="1.2"></circle><line x1="9.4" y1="9.4" x2="13" y2="13" stroke="#9C7434" stroke-width="1.2"></line></svg>
+          <input placeholder="Rechercher" style="min-width:0;border:none;outline:none;background:transparent;font-family:Jost,sans-serif;font-size:13px;color:#1E0A1A;width:min(16vw,190px)" />
+        </label>
+      </sc-if>
+    </div>
+
+    <a href="#accueil" style="justify-self:center;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px">
+      <svg width="clamp(20px,3vw,28px)" viewBox="0 0 40 40" aria-hidden="true" style="display:block;width:clamp(20px,3vw,28px);height:auto">
+        <path d="M20 0 L23.2 16.8 L40 20 L23.2 23.2 L20 40 L16.8 23.2 L0 20 L16.8 16.8 Z" fill="#B8913D"></path>
+        <path d="M31.5 8.5 L27.6 16.1 L20.1 20 L27.6 23.9 L31.5 31.5 L35.4 23.9 L43 20 L35.4 16.1 Z" fill="none"></path>
+      </svg>
+      <span style="display:block;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(23px,4.6vw,40px);letter-spacing:.14em;line-height:1;text-transform:uppercase">Cassandra</span>
+      <span style="display:block;font-size:9.5px;letter-spacing:.42em;text-transform:uppercase;color:#9C7434">Beauty · Paris</span>
+    </a>
+
+    <div style="justify-self:end;min-width:0;display:flex;align-items:center;gap:4px">
+      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ basculerRecherche }}" aria-label="Rechercher" style="width:46px;height:46px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center">
+          <svg width="17" height="17" viewBox="0 0 14 14" aria-hidden="true"><circle cx="6" cy="6" r="4.4" fill="none" stroke="#1E0A1A" stroke-width="1.2"></circle><line x1="9.4" y1="9.4" x2="13" y2="13" stroke="#1E0A1A" stroke-width="1.2"></line></svg>
+        </button>
+        <button onClick="{{ voirPanier }}" aria-label="Panier" style="display:flex;align-items:center;gap:7px;height:46px;padding:0 16px;border:1px solid #1E0A1A;border-radius:2px;background:#5C1329;color:#EFE0CC;font-size:12px;letter-spacing:.1em;cursor:pointer">
+          <span style="position:relative;display:inline-block;width:12px;height:13px"><span style="position:absolute;bottom:0;left:0;width:12px;height:9px;border:1px solid #DFC08A"></span><span style="position:absolute;top:0;left:3px;width:6px;height:5px;border:1px solid #DFC08A;border-bottom:none;border-radius:3px 3px 0 0"></span></span>
+          {{ nbPanier }}
+        </button>
+      </sc-if>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+        <a href="#compte" style="display:flex;flex:0 0 auto;align-items:center;gap:8px;padding:12px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase">
+          <span style="position:relative;display:inline-block;width:13px;height:14px"><span style="position:absolute;top:0;left:3px;width:7px;height:7px;border-radius:50%;border:1px solid #1E0A1A"></span><span style="position:absolute;bottom:0;left:0;width:13px;height:6px;border-radius:7px 7px 0 0;border:1px solid #1E0A1A;border-bottom:none"></span></span>
+          <sc-if value="{{ large }}" hint-placeholder-val="{{ true }}">Compte</sc-if>
+        </a>
+        <button onClick="{{ voirFavoris }}" style="display:flex;flex:0 0 auto;align-items:center;gap:7px;padding:12px 12px;border:none;background:transparent;color:#1E0A1A;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer">
+          <span style="color:#B8446E;font-size:14px;line-height:1">{{ coeurEntete }}</span> <sc-if value="{{ large }}" hint-placeholder-val="{{ true }}">Favoris</sc-if> <span style="color:#9C7434">{{ nbFavoris }}</span>
+        </button>
+        <button onClick="{{ voirPanier }}" style="display:flex;flex:0 0 auto;align-items:center;gap:9px;padding:13px 18px;border:1px solid #1E0A1A;border-radius:2px;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer" style-hover="background:#3A1330">
+          <span style="position:relative;display:inline-block;width:12px;height:13px"><span style="position:absolute;bottom:0;left:0;width:12px;height:9px;border:1px solid #DFC08A"></span><span style="position:absolute;top:0;left:3px;width:6px;height:5px;border:1px solid #DFC08A;border-bottom:none;border-radius:3px 3px 0 0"></span></span>
+          Panier <span style="color:#DFC08A">{{ nbPanier }}</span>
+        </button>
+      </sc-if>
+    </div>
+  </div>
+
+  <sc-if value="{{ rechercheOuverte }}" hint-placeholder-val="{{ false }}">
+    <div style="border-top:1px solid #EADFD3;background:#fff;animation:cb-drop .18s ease both">
+      <label style="display:flex;align-items:center;gap:12px;max-width:1340px;margin:0 auto;padding:16px 24px">
+        <svg width="16" height="16" viewBox="0 0 14 14" aria-hidden="true"><circle cx="6" cy="6" r="4.4" fill="none" stroke="#9C7434" stroke-width="1.2"></circle><line x1="9.4" y1="9.4" x2="13" y2="13" stroke="#9C7434" stroke-width="1.2"></line></svg>
+        <input placeholder="Rechercher une teinte, un produit" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:Jost,sans-serif;font-size:15px;color:#1E0A1A" />
+      </label>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+  <nav style="border-top:1px solid #EADFD3">
+    <div style="max-width:1340px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:2px">
+
+      <div onMouseEnter="{{ ouvrirPromos }}" onMouseLeave="{{ fermerMenu }}" style="position:static">
+        <a href="#promotions" style="display:block;padding:14px clamp(9px,1vw,16px);white-space:nowrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#B8446E;border-bottom:1px solid transparent" style-hover="border-bottom:1px solid #B8446E">Promotions</a>
+        <sc-if value="{{ menuPromos }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid #EADFD3;box-shadow:0 24px 48px rgba(30,10,26,.10);animation:cb-drop .18s ease both">
+            <div style="max-width:1340px;margin:0 auto;padding:36px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px">
+              <div style="display:flex;flex-direction:column;gap:8px;cursor:default">
+                <span style="align-self:flex-start;padding:5px 11px;background:#F2E2E8;color:#B8446E;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase">−15 %</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:19px">Le duo teint</span>
+                <span style="font-size:13px;line-height:1.6;color:#6A5344">Base Grippy et fond de teint achetés ensemble.</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;cursor:default">
+                <span style="align-self:flex-start;padding:5px 11px;background:#F2E2E8;color:#B8446E;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase">2 = 3</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:19px">Deux gloss achetés, un offert</span>
+                <span style="font-size:13px;line-height:1.6;color:#6A5344">Le moins cher des trois est offert.</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;cursor:default">
+                <span style="align-self:flex-start;padding:5px 11px;background:#F2E2E8;color:#B8446E;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase">Cadeau</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:19px">Trois mini-produits offerts</span>
+                <span style="font-size:13px;line-height:1.6;color:#6A5344">Dès 120 € d'achat, glissés dans votre commande.</span>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <div onMouseEnter="{{ ouvrirNouveautes }}" onMouseLeave="{{ fermerMenu }}" style="position:static">
+        <span style="display:block;padding:14px clamp(9px,1vw,16px);white-space:nowrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid transparent;cursor:default" style-hover="border-bottom:1px solid #9C7434">Nouveautés</span>
+        <sc-if value="{{ menuNouveautes }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid #EADFD3;box-shadow:0 24px 48px rgba(30,10,26,.10);animation:cb-drop .18s ease both">
+            <div style="max-width:1340px;margin:0 auto;padding:38px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:34px">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <p style="margin:0 0 6px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Édition limitée</p>
+                <a href="calendrier.html" style="font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:.02em">Le Calendrier de l'Avent</a>
+                <p style="margin:0;font-size:13px;line-height:1.6;color:#6A5344">24 cases, 24 gestes enrichis en soin. 149,99 € — valeur 420 €.</p>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:11px">
+                <p style="margin:0 0 6px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Tout juste arrivé</p>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Blush liquide</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Huile à lèvres</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Poudre compacte</span>
+              </div>
+              <div style="position:relative;min-height:190px;background:#F3E8DC">
+                <image-slot id="cb-menu-nouveautes" shape="rect" src="./images/trio-nouveautes.png" placeholder="IMG 02 — trio de produits dorés"></image-slot>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <div onMouseEnter="{{ ouvrirMaquillage }}" onMouseLeave="{{ fermerMenu }}" style="position:static">
+        <span style="display:block;padding:14px clamp(9px,1vw,16px);white-space:nowrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid transparent;cursor:default" style-hover="border-bottom:1px solid #9C7434">Maquillage</span>
+        <sc-if value="{{ menuMaquillage }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid #EADFD3;box-shadow:0 24px 48px rgba(30,10,26,.10);animation:cb-drop .18s ease both">
+            <div style="max-width:1340px;margin:0 auto;padding:38px 24px 42px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:34px">
+              <div style="display:flex;flex-direction:column;gap:11px">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Teint</p>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Fond de teint</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Concealer</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Poudre libre</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Poudre compacte</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Spray fixateur</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:11px">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Joues</p>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Blush liquide</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Blush poudre</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Bronzer liquide</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Bronzer poudre</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Highlighter liquide</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Highlighter poudre</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:11px">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Lèvres</p>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Rouge à lèvres</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Crayon à lèvres</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Gloss</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Huile à lèvres</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:11px">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Yeux</p>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Mascara</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Crayon à sourcils</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Fixateur de sourcils</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:11px">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Pinceaux</p>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Pinceaux Teint</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Pinceaux Yeux</span>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <div onMouseEnter="{{ ouvrirBest }}" onMouseLeave="{{ fermerMenu }}" style="position:static">
+        <a href="#bestsellers" style="display:block;padding:14px clamp(9px,1vw,16px);white-space:nowrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid transparent" style-hover="border-bottom:1px solid #9C7434">Best sellers</a>
+        <sc-if value="{{ menuBest }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid #EADFD3;box-shadow:0 24px 48px rgba(30,10,26,.10);animation:cb-drop .18s ease both">
+            <div style="max-width:1340px;margin:0 auto;padding:32px 24px 36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px">
+              <a href="#bestsellers" style="display:flex;flex-direction:column;gap:10px">
+                <span style="position:relative;display:block;aspect-ratio:4/5;background:#F7E9EE;overflow:hidden"><img src="./images/blush-poudre.jpg" alt="Blush poudre" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(1.02)" /></span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:17px">Blush Poudre</span>
+                <span style="font-size:13px;color:#6A5344">29,99 €</span>
+              </a>
+              <a href="#bestsellers" style="display:flex;flex-direction:column;gap:10px">
+                <span style="position:relative;display:block;aspect-ratio:4/5;background:#F6EBDD;overflow:hidden"><img src="./images/bronzer.jpg" alt="Bronzer poudre" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(1.02)" /></span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:17px">Bronzer Poudre</span>
+                <span style="font-size:13px;color:#6A5344">29,99 €</span>
+              </a>
+              <a href="#bestsellers" style="display:flex;flex-direction:column;gap:10px">
+                <span style="position:relative;display:block;aspect-ratio:4/5;background:#FBEEDA;overflow:hidden"><img src="./images/enlumineur.jpg" alt="Highlighter" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(1.02)" /></span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:17px">Highlighter</span>
+                <span style="font-size:13px;color:#6A5344">34,99 €</span>
+              </a>
+              <a href="#bestsellers" style="display:flex;flex-direction:column;gap:10px">
+                <span style="position:relative;display:block;aspect-ratio:4/5;background:#F7E9EE;overflow:hidden"><img src="./images/gloss.jpg" alt="Gloss Brillance" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(1.02)" /></span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:17px">Gloss Brillance</span>
+                <span style="font-size:13px;color:#6A5344">22,99 €</span>
+              </a>
+              <a href="#bestsellers" style="display:flex;flex-direction:column;gap:10px">
+                <span style="position:relative;display:block;aspect-ratio:4/5;background:#F3EADF;overflow:hidden"><img src="./images/base-grippy.jpg" alt="Base Grippy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;transform:scale(1.02)" /></span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:17px">Base Grippy</span>
+                <span style="font-size:13px;color:#6A5344">25,99 €</span>
+              </a>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      <div onMouseEnter="{{ ouvrirHistoire }}" onMouseLeave="{{ fermerMenu }}" style="position:static">
+        <span style="display:block;padding:14px clamp(9px,1vw,16px);white-space:nowrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid transparent;cursor:default" style-hover="border-bottom:1px solid #9C7434">Notre histoire</span>
+        <sc-if value="{{ menuHistoire }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid #EADFD3;box-shadow:0 24px 48px rgba(30,10,26,.10);animation:cb-drop .18s ease both">
+            <div style="max-width:1340px;margin:0 auto;padding:38px 24px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:min(1340px,100%)">
+              <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">La maison</p>
+              <p style="margin:0;max-width:60ch;font-family:'Cormorant Garamond',serif;font-size:clamp(19px,2vw,26px);line-height:1.35;color:#33202C">Fondée à Paris en 2026, Cassandra Beauty formule un maquillage enrichi en soin&nbsp;: des pigments francs, une tenue du matin au soir, une peau qui ne tire pas.</p>
+              <a href="histoire.html" style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">En savoir plus →</a>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      <a href="#pro" style="padding:14px clamp(9px,1vw,16px);white-space:nowrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid transparent" style-hover="border-bottom:1px solid #9C7434">Espace pro</a>
+
+      <div onMouseEnter="{{ ouvrirServices }}" onMouseLeave="{{ fermerMenu }}" style="position:static">
+        <span style="display:block;padding:14px clamp(9px,1vw,16px);white-space:nowrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid transparent;cursor:default" style-hover="border-bottom:1px solid #9C7434">Services</span>
+        <sc-if value="{{ menuServices }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid #EADFD3;box-shadow:0 24px 48px rgba(30,10,26,.10);animation:cb-drop .18s ease both">
+            <div style="max-width:1340px;margin:0 auto;padding:38px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:34px">
+              <div style="display:flex;flex-direction:column;gap:11px">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Avec nous</p>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Trouver le magasin le plus proche</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Tutos maquillage</span>
+                <a href="#promotions" style="font-size:14px;color:#4E3A2E">Carte cadeau</a>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:11px">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Analyseur de teint</p>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Trouver votre fond de teint</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Détecteur d'anti-cernes</span>
+                <span style="font-size:14px;color:#4E3A2E;cursor:default">Votre routine en 5 minutes</span>
+              </div>
+              <div style="padding:22px 24px;background:#FBF6F1">
+                <p style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-size:21px">Votre teinte en 60 secondes</p>
+                <p style="margin:0 0 14px;font-size:13px;line-height:1.6;color:#6A5344">Six questions et l'analyseur vous donne votre fond de teint et votre anti-cernes.</p>
+                <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434;cursor:default">Bientôt disponible</span>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </nav>
+  </sc-if>
+</header>
+
+<sc-if value="{{ menuMobileOuvert }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:60;display:flex">
+  <div onClick="{{ fermerMenuMobile }}" style="position:absolute;inset:0;background:rgba(30,10,26,.45);animation:cb-fade .2s ease both"></div>
+  <aside style="position:relative;width:min(88vw,400px);height:100%;overflow-y:auto;background:#FBF6F1;border-right:1px solid #EADFD3;animation:cb-slide .26s cubic-bezier(.22,.7,.3,1) both">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #EADFD3">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:19px;letter-spacing:.16em;text-transform:uppercase">Cassandra</span>
+      <button onClick="{{ fermerMenuMobile }}" aria-label="Fermer" style="width:44px;height:44px;border:1px solid #E3D4C5;border-radius:50%;background:#fff;color:#1E0A1A;font-size:17px;line-height:1;cursor:pointer">×</button>
+    </div>
+
+    <div style="padding:6px 22px 30px;display:flex;flex-direction:column">
+      <a href="#promotions" onClick="{{ fermerMenuMobile }}" style="padding:17px 0;border-bottom:1px solid #EADFD3;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#B8446E">Promotions</a>
+
+      <button data-s="nouveautes" onClick="{{ basculerSection }}" style="display:flex;align-items:center;justify-content:space-between;padding:17px 0;border:none;border-bottom:1px solid #EADFD3;background:transparent;color:#1E0A1A;font-family:Jost,sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-align:left;cursor:pointer">Nouveautés <span style="color:#9C7434;font-size:15px">{{ signeNouveautes }}</span></button>
+      <sc-if value="{{ sectionNouveautes }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:13px;padding:16px 0 18px 12px;border-bottom:1px solid #EADFD3;animation:cb-drop .18s ease both">
+          <a href="calendrier.html" style="font-family:'Cormorant Garamond',serif;font-size:19px">Le Calendrier de l'Avent</a>
+          <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Blush liquide</span>
+          <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Huile à lèvres</span>
+          <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Poudre compacte</span>
+        </div>
+      </sc-if>
+
+      <button data-s="maquillage" onClick="{{ basculerSection }}" style="display:flex;align-items:center;justify-content:space-between;padding:17px 0;border:none;border-bottom:1px solid #EADFD3;background:transparent;color:#1E0A1A;font-family:Jost,sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-align:left;cursor:pointer">Maquillage <span style="color:#9C7434;font-size:15px">{{ signeMaquillage }}</span></button>
+      <sc-if value="{{ sectionMaquillage }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:16px 0 20px 12px;border-bottom:1px solid #EADFD3;display:flex;flex-direction:column;gap:20px;animation:cb-drop .18s ease both">
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Teint</p>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Fond de teint</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Concealer</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Poudre libre</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Poudre compacte</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Spray fixateur</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Joues</p>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Blush liquide</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Blush poudre</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Bronzer liquide</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Bronzer poudre</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Highlighter liquide</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Highlighter poudre</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Lèvres</p>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Rouge à lèvres</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Crayon à lèvres</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Gloss</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Huile à lèvres</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Yeux</p>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Mascara</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Crayon à sourcils</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Fixateur de sourcils</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Pinceaux</p>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Pinceaux Teint</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Pinceaux Yeux</span>
+          </div>
+        </div>
+      </sc-if>
+
+      <a href="#bestsellers" onClick="{{ fermerMenuMobile }}" style="padding:17px 0;border-bottom:1px solid #EADFD3;font-size:12px;letter-spacing:.2em;text-transform:uppercase">Best sellers</a>
+      <a href="histoire.html" style="padding:17px 0;border-bottom:1px solid #EADFD3;font-size:12px;letter-spacing:.2em;text-transform:uppercase">Notre histoire</a>
+      <a href="#pro" onClick="{{ fermerMenuMobile }}" style="padding:17px 0;border-bottom:1px solid #EADFD3;font-size:12px;letter-spacing:.2em;text-transform:uppercase">Espace pro</a>
+
+      <button data-s="services" onClick="{{ basculerSection }}" style="display:flex;align-items:center;justify-content:space-between;padding:17px 0;border:none;border-bottom:1px solid #EADFD3;background:transparent;color:#1E0A1A;font-family:Jost,sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-align:left;cursor:pointer">Services <span style="color:#9C7434;font-size:15px">{{ signeServices }}</span></button>
+      <sc-if value="{{ sectionServices }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:16px 0 20px 12px;border-bottom:1px solid #EADFD3;display:flex;flex-direction:column;gap:20px;animation:cb-drop .18s ease both">
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Avec nous</p>
+            <span style="font-size:14px;color:#4E3A2E;cursor:default">Trouver le magasin le plus proche</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Tutos maquillage</span>
+            <a href="#promotions" onClick="{{ fermerMenuMobile }}" style="font-size:14.5px;color:#4E3A2E">Carte cadeau</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Analyseur de teint</p>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Trouver votre fond de teint</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Détecteur d'anti-cernes</span>
+            <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Votre routine en 5 minutes</span>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="display:flex;gap:10px;margin-top:22px">
+        <a href="#compte" onClick="{{ fermerMenuMobile }}" style="flex:1;padding:15px;text-align:center;border:1px solid #1E0A1A;font-size:11px;letter-spacing:.16em;text-transform:uppercase">Mon compte</a>
+        <button onClick="{{ voirFavoris }}" style="flex:1;padding:15px;border:1px solid #E3C3D2;background:{{ fondFavEntete }};color:#B8446E;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer">{{ coeurEntete }} Favoris ({{ nbFavoris }})</button>
+      </div>
+      <p style="margin:18px 0 0;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9C7434">@cassandrabeauty</p>
+    </div>
+  </aside>
+</div>
+</sc-if>
+
+<section id="calendrier" style="position:relative;min-height:clamp(400px,38vw,600px);background:#521124;overflow:hidden;display:flex;align-items:center">
+  <img src="./images/calendrier-avent.png" alt="Calendrier de l'Avent Cassandra Beauty" style="position:absolute;top:0;right:0;width:min(68%,1000px);height:100%;object-fit:cover;object-position:50% 38%" />
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,#521124 0%,#521124 26%,rgba(82,17,36,.86) 42%,rgba(82,17,36,.3) 58%,rgba(82,17,36,0) 72%);pointer-events:none"></div>
+  <div style="position:relative;width:100%;display:flex;align-items:center">
+    <div style="width:100%;max-width:1340px;margin:0 auto;padding:clamp(34px,5vw,56px) clamp(24px,5vw,64px)">
+      <div style="max-width:min(520px,60%);display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,1.8vw,22px)">
+        <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(32px,4.6vw,66px);line-height:1;color:#F3E2CB">Nouveauté&nbsp;!</span>
+        <h1 style="margin:0;font-family:Jost,sans-serif;font-weight:400;font-size:clamp(19px,2.5vw,36px);letter-spacing:.14em;text-transform:uppercase;line-height:1.3;color:#FBF6F1">Cassandra Beauty<br />Calendrier de l'Avent</h1>
+        <a href="calendrier.html" style="padding-bottom:5px;border-bottom:1.5px solid #F3E2CB;font-size:clamp(13px,1.2vw,17px);letter-spacing:.08em;color:#F3E2CB" style-hover="color:#DFC08A;border-color:#DFC08A">Découvrir</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="border-bottom:1px solid #EADFD3;border-top:1px solid #E6CFA8;background:linear-gradient(180deg,#FFFDFB,#FBF4EC)">
+  <div style="max-width:1340px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+    <p style="margin:0;padding:18px 8px;text-align:center;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#6A5344">Livraison offerte dès 49 €</p>
+    <p style="margin:0;padding:18px 8px;text-align:center;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#6A5344">Formules enrichies en soin</p>
+    <p style="margin:0;padding:18px 8px;text-align:center;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#6A5344">Cruelty-free · fabriqué en Europe</p>
+    <p style="margin:0;padding:18px 8px;text-align:center;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#6A5344">Paiement en 3× sans frais</p>
+  </div>
+</div>
+
+<section id="promotions" style="padding:clamp(40px,5vw,66px) 24px 0">
+  <div style="max-width:1340px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:clamp(20px,2.6vw,30px)">
+      <div>
+        <p style="margin:0 0 12px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#B8446E">Promotions du moment</p>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,4vw,46px);line-height:1.05">Trois offres, jusqu'au 31 décembre</h2>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:#EADFD3;border:1px solid #EADFD3">
+      <article style="background:#fff;padding:30px 26px;display:flex;flex-direction:column;gap:10px">
+                <span style="align-self:flex-start;padding:6px 12px;background:#F2E2E8;color:#B8446E;font-size:10px;letter-spacing:.16em;text-transform:uppercase">−15 %</span>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:22px">Le duo teint</h3>
+        <p style="margin:0;font-size:14px;line-height:1.7;color:#6A5344">Base Grippy et fond de teint achetés ensemble&nbsp;: −15 % sur les deux, remise appliquée au panier.</p>
+        <span style="margin-top:auto;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434;cursor:default">Offre appliquée au panier</span>
+      </article>
+      <article style="background:#fff;padding:30px 26px;display:flex;flex-direction:column;gap:10px">
+                <span style="align-self:flex-start;padding:6px 12px;background:#F2E2E8;color:#B8446E;font-size:10px;letter-spacing:.16em;text-transform:uppercase">2 = 3</span>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:22px">Deux gloss achetés, un offert</h3>
+        <p style="margin:0;font-size:14px;line-height:1.7;color:#6A5344">Le gloss ou l'huile à lèvres offert est le moins cher des trois, teintes au choix.</p>
+        <span style="margin-top:auto;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434;cursor:default">Offre appliquée au panier</span>
+      </article>
+      <article style="background:#fff;padding:30px 26px;display:flex;flex-direction:column;gap:10px">
+                <span style="align-self:flex-start;padding:6px 12px;background:#F2E2E8;color:#B8446E;font-size:10px;letter-spacing:.16em;text-transform:uppercase">Cadeau</span>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:22px">Trois mini-produits offerts</h3>
+        <p style="margin:0;font-size:14px;line-height:1.7;color:#6A5344">Dès 120 € d'achat, trois formats découverte glissés dans votre commande.</p>
+        <span style="margin-top:auto;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434;cursor:default">Offre appliquée au panier</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="avis" style="padding:clamp(40px,5vw,64px) 24px 0">
+  <div style="max-width:1340px;margin:0 auto;background:#fff;border:1px solid #EADFD3;padding:clamp(24px,3.4vw,38px);display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(20px,3vw,34px)">
+    <div style="display:flex;flex-direction:column;gap:12px;justify-content:center">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px">
+        <span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:52px;line-height:1">4,5</span>
+        <div>
+          <span style="position:relative;display:inline-block;color:#E0D2C2;font-size:19px;letter-spacing:3px">★★★★★<span style="position:absolute;top:0;left:0;width:90%;overflow:hidden;color:#9C7434;letter-spacing:3px">★★★★★</span></span>
+          <p style="margin:5px 0 0;font-size:12px;letter-spacing:.08em;color:#8A7263">327 avis vérifiés</p>
+        </div>
+      </div>
+      <a href="#avis" style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Lire les 327 avis →</a>
+    </div>
+    <article style="display:flex;flex-direction:column;gap:6px;padding-left:clamp(0px,1.4vw,18px);border-left:1px solid #EADFD3">
+      <span style="color:#9C7434;font-size:12px;letter-spacing:2px">★★★★★</span>
+      <p style="margin:0;font-size:14.5px;line-height:1.7;color:#33202C">« Le blush liquide se fond comme une crème de soin, et l'écrin doré est magnifique sur ma coiffeuse. »</p>
+      <span style="font-size:11.5px;letter-spacing:.08em;color:#8A7263">Inès M. · achat vérifié</span>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:6px;padding-left:clamp(0px,1.4vw,18px);border-left:1px solid #EADFD3">
+      <span style="color:#9C7434;font-size:12px;letter-spacing:2px">★★★★<span style="color:#E0D2C2">★</span></span>
+      <p style="margin:0;font-size:14.5px;line-height:1.7;color:#33202C">« Concealer vraiment couvrant sans marquer les cernes. J'aurais aimé une teinte plus claire. »</p>
+      <span style="font-size:11.5px;letter-spacing:.08em;color:#8A7263">Farah B. · achat vérifié</span>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:6px;padding-left:clamp(0px,1.4vw,18px);border-left:1px solid #EADFD3">
+      <span style="color:#9C7434;font-size:12px;letter-spacing:2px">★★★★★</span>
+      <p style="margin:0;font-size:14.5px;line-height:1.7;color:#33202C">« Commandé pour ma fille de 16 ans, on se le partage. Les pinceaux valent leur prix. »</p>
+      <span style="font-size:11.5px;letter-spacing:.08em;color:#8A7263">Sandrine L. · achat vérifié</span>
+    </article>
+  </div>
+</section>
+
+<section id="bestsellers" style="padding:clamp(44px,6vw,78px) 0 10px">
+  <div style="max-width:1340px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px">
+    <div>
+      <p style="margin:0 0 12px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9C7434">Les préférés</p>
+      <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,4.4vw,50px);line-height:1.05">Voir les best sellers</h2>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button onClick="{{ bsPrev }}" aria-label="Précédent" style="width:46px;height:46px;border:1px solid #E3D4C5;background:#fff;color:#1E0A1A;font-size:15px;cursor:pointer" style-hover="border-color:#9C7434;color:#9C7434">‹</button>
+      <button onClick="{{ bsNext }}" aria-label="Suivant" style="width:46px;height:46px;border:1px solid #E3D4C5;background:#fff;color:#1E0A1A;font-size:15px;cursor:pointer" style-hover="border-color:#9C7434;color:#9C7434">›</button>
+    </div>
+  </div>
+  <div ref="{{ bsRef }}" style="max-width:1340px;margin:28px auto 0;padding:0 24px 34px;display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory">
+
+    <article style="flex:0 0 clamp(238px,25vw,296px);min-width:0;scroll-snap-align:start;background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
+      <div style="position:relative;aspect-ratio:4/5;background:#F5EDE3;overflow:hidden">
+        <img src="./images/blush-poudre.jpg" alt="Blush poudre rosé dans son boîtier doré" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;transform:scale(1)" />
+        <span style="position:absolute;top:0;left:0;padding:7px 12px;background:#5C1329;color:#DFC08A;font-size:9px;letter-spacing:.2em;text-transform:uppercase;pointer-events:none">Best seller</span>
+      </div>
+      <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1">
+        <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Joues</p>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Blush Poudre</h3>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#8A7263">
+          <span style="position:relative;display:inline-block;color:#E0D2C2;letter-spacing:2px">★★★★★<span style="position:absolute;top:0;left:0;width:90%;overflow:hidden;color:#9C7434;letter-spacing:2px">★★★★★</span></span>
+          <span>4,5</span>
+        </div>
+        <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">29,99 €</p>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button data-nom="Blush Poudre" data-prix="29.99" data-img="./images/blush-poudre.jpg" onClick="{{ ajouterPanier }}" style="flex:1;padding:14px;border:1px solid #1E0A1A;background:#fff;color:#1E0A1A;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+          <button data-nom="Blush Poudre" data-prix="29.99" data-img="./images/blush-poudre.jpg" onClick="{{ ajouterFavori }}" aria-label="Ajouter aux favoris" style="width:46px;border:1px solid {{ bordBlushPoudre }};background:{{ fondBlushPoudre }};color:#B8446E;font-size:15px;cursor:pointer">{{ coeurBlushPoudre }}</button>
+        </div>
+      </div>
+    </article>
+
+    <article style="flex:0 0 clamp(238px,25vw,296px);min-width:0;scroll-snap-align:start;background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
+      <div style="position:relative;aspect-ratio:4/5;background:#F5EDE3;overflow:hidden">
+        <img src="./images/bronzer.jpg" alt="Bronzer poudre dans son boîtier doré rond" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 49%;transform:scale(1.9)" />
+      </div>
+      <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1">
+        <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Joues</p>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Bronzer Poudre</h3>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#8A7263">
+          <span style="position:relative;display:inline-block;color:#E0D2C2;letter-spacing:2px">★★★★★<span style="position:absolute;top:0;left:0;width:96%;overflow:hidden;color:#9C7434;letter-spacing:2px">★★★★★</span></span>
+          <span>4,8</span>
+        </div>
+        <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">29,99 €</p>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button data-nom="Bronzer Poudre" data-prix="29.99" data-img="./images/bronzer.jpg" onClick="{{ ajouterPanier }}" style="flex:1;padding:14px;border:1px solid #1E0A1A;background:#fff;color:#1E0A1A;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+          <button data-nom="Bronzer Poudre" data-prix="29.99" data-img="./images/bronzer.jpg" onClick="{{ ajouterFavori }}" aria-label="Ajouter aux favoris" style="width:46px;border:1px solid {{ bordBronzerPoudre }};background:{{ fondBronzerPoudre }};color:#B8446E;font-size:15px;cursor:pointer">{{ coeurBronzerPoudre }}</button>
+        </div>
+      </div>
+    </article>
+
+    <article style="flex:0 0 clamp(238px,25vw,296px);min-width:0;scroll-snap-align:start;background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
+      <div style="position:relative;aspect-ratio:4/5;background:#F5EDE3;overflow:hidden">
+        <img src="./images/enlumineur.jpg" alt="Enlumineur doré dans son boîtier carré" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:52% 49%;transform:scale(1.3)" />
+      </div>
+      <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1">
+        <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Joues</p>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Highlighter</h3>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#8A7263">
+          <span style="position:relative;display:inline-block;color:#E0D2C2;letter-spacing:2px">★★★★★<span style="position:absolute;top:0;left:0;width:100%;overflow:hidden;color:#9C7434;letter-spacing:2px">★★★★★</span></span>
+          <span>5,0</span>
+        </div>
+        <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">34,99 €</p>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button data-nom="Highlighter" data-prix="34.99" data-img="./images/enlumineur.jpg" onClick="{{ ajouterPanier }}" style="flex:1;padding:14px;border:1px solid #1E0A1A;background:#fff;color:#1E0A1A;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+          <button data-nom="Highlighter" data-prix="34.99" data-img="./images/enlumineur.jpg" onClick="{{ ajouterFavori }}" aria-label="Ajouter aux favoris" style="width:46px;border:1px solid {{ bordHighlighter }};background:{{ fondHighlighter }};color:#B8446E;font-size:15px;cursor:pointer">{{ coeurHighlighter }}</button>
+        </div>
+      </div>
+    </article>
+
+    <article style="flex:0 0 clamp(238px,25vw,296px);min-width:0;scroll-snap-align:start;background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
+      <div style="position:relative;aspect-ratio:4/5;background:#F5EDE3;overflow:hidden">
+        <img src="./images/gloss.jpg" alt="Trio de gloss Cassandra Beauty à capuchon doré" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:52% 46%;transform:scale(1.26)" />
+      </div>
+      <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1">
+        <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Lèvres</p>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Gloss Brillance</h3>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#8A7263">
+          <span style="position:relative;display:inline-block;color:#E0D2C2;letter-spacing:2px">★★★★★<span style="position:absolute;top:0;left:0;width:80%;overflow:hidden;color:#9C7434;letter-spacing:2px">★★★★★</span></span>
+          <span>4,0</span>
+        </div>
+        <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">22,99 €</p>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button data-nom="Gloss Brillance" data-prix="22.99" data-img="./images/gloss.jpg" onClick="{{ ajouterPanier }}" style="flex:1;padding:14px;border:1px solid #1E0A1A;background:#fff;color:#1E0A1A;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+          <button data-nom="Gloss Brillance" data-prix="22.99" data-img="./images/gloss.jpg" onClick="{{ ajouterFavori }}" aria-label="Ajouter aux favoris" style="width:46px;border:1px solid {{ bordGlossBrillance }};background:{{ fondGlossBrillance }};color:#B8446E;font-size:15px;cursor:pointer">{{ coeurGlossBrillance }}</button>
+        </div>
+      </div>
+    </article>
+
+    <article style="flex:0 0 clamp(238px,25vw,296px);min-width:0;scroll-snap-align:start;background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
+      <div style="position:relative;aspect-ratio:4/5;background:#F5EDE3;overflow:hidden">
+        <img src="./images/base-grippy.jpg" alt="Tube de base préparatrice Base Grippy bordeaux et doré" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 48%;transform:scale(1.12)" />
+      </div>
+      <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1">
+        <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Teint</p>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Base Grippy</h3>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#8A7263">
+          <span style="position:relative;display:inline-block;color:#E0D2C2;letter-spacing:2px">★★★★★<span style="position:absolute;top:0;left:0;width:92%;overflow:hidden;color:#9C7434;letter-spacing:2px">★★★★★</span></span>
+          <span>4,6</span>
+        </div>
+        <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">25,99 €</p>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button data-nom="Base Grippy" data-prix="25.99" data-img="./images/base-grippy.jpg" onClick="{{ ajouterPanier }}" style="flex:1;padding:14px;border:1px solid #1E0A1A;background:#fff;color:#1E0A1A;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+          <button data-nom="Base Grippy" data-prix="25.99" data-img="./images/base-grippy.jpg" onClick="{{ ajouterFavori }}" aria-label="Ajouter aux favoris" style="width:46px;border:1px solid {{ bordBaseGrippy }};background:{{ fondBaseGrippy }};color:#B8446E;font-size:15px;cursor:pointer">{{ coeurBaseGrippy }}</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section style="padding:clamp(34px,4.5vw,58px) 24px;background:linear-gradient(180deg,#FBEFE8,#F4EBE2)">
+  <div style="max-width:1000px;margin:0 auto;text-align:center;display:flex;flex-direction:column;gap:14px">
+    <p style="margin:0;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9C7434">Notre parti pris</p>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3.6vw,42px);line-height:1.1">Des formules enrichies en soin</h2>
+    <p style="margin:0 auto;max-width:62ch;font-size:15px;line-height:1.75;color:#4E3A2E;text-wrap:pretty">Fonds de teint, anti-cernes, blushs liquides, gloss et rouges à lèvres sont enrichis en soin&nbsp;: acide hyaluronique, squalane et huile de camélia. Des pigments francs mais jamais excessifs, et une peau qui ne tire pas en fin de journée.</p>
+  </div>
+</section>
+
+
+<sc-if value="{{ afficherVideos }}" hint-placeholder-val="{{ true }}">
+<section style="padding:clamp(44px,6vw,74px) 0;background:linear-gradient(180deg,#F7EDE6,#F2E4DA)">
+  <div style="max-width:1340px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px">
+    <div>
+      <p style="margin:0 0 12px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9C7434">Elles nous ont fait confiance</p>
+      <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,4vw,44px);line-height:1.05">Pourquoi pas vous&nbsp;?</h2>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button onClick="{{ vidPrev }}" aria-label="Précédent" style="width:46px;height:46px;border:1px solid #DCCBB9;background:#fff;color:#1E0A1A;font-size:15px;cursor:pointer">‹</button>
+      <button onClick="{{ vidNext }}" aria-label="Suivant" style="width:46px;height:46px;border:1px solid #DCCBB9;background:#fff;color:#1E0A1A;font-size:15px;cursor:pointer">›</button>
+    </div>
+  </div>
+  <div ref="{{ vidRef }}" style="max-width:1340px;margin:26px auto 0;padding:0 24px 8px;display:flex;gap:18px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory">
+    <figure style="flex:0 0 clamp(196px,21vw,240px);min-width:0;scroll-snap-align:start;margin:0">
+      <div style="position:relative;aspect-ratio:9/16;background:#E6D8CB;overflow:hidden">
+        <img src="./images/influ-1.jpeg" alt="Cliente appliquant le blush poudre au pinceau" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:rgba(251,246,241,.88)"><span style="display:block;width:0;height:0;margin-left:4px;border-left:13px solid #5C1329;border-top:8px solid transparent;border-bottom:8px solid transparent"></span></span></div>
+      </div>
+      <figcaption style="margin-top:12px;font-size:13.5px;line-height:1.55;color:#4E3A2E">« Le blush poudre se fond en deux gestes. » <span style="color:#9C7434">@lea.mua</span></figcaption>
+    </figure>
+    <figure style="flex:0 0 clamp(196px,21vw,240px);min-width:0;scroll-snap-align:start;margin:0">
+      <div style="position:relative;aspect-ratio:9/16;background:#E6D8CB;overflow:hidden">
+        <img src="./images/influ-2.jpeg" alt="Cliente appliquant le gloss brillance" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:rgba(251,246,241,.88)"><span style="display:block;width:0;height:0;margin-left:4px;border-left:13px solid #5C1329;border-top:8px solid transparent;border-bottom:8px solid transparent"></span></span></div>
+      </div>
+      <figcaption style="margin-top:12px;font-size:13.5px;line-height:1.55;color:#4E3A2E">« Le gloss, ma touche finale de tous les jours. » <span style="color:#9C7434">@nour.beauty</span></figcaption>
+    </figure>
+    <figure style="flex:0 0 clamp(196px,21vw,240px);min-width:0;scroll-snap-align:start;margin:0">
+      <div style="position:relative;aspect-ratio:9/16;background:#E6D8CB;overflow:hidden">
+        <img src="./images/influ-3.jpeg" alt="Cliente appliquant le highlighter au pinceau" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:rgba(251,246,241,.88)"><span style="display:block;width:0;height:0;margin-left:4px;border-left:13px solid #5C1329;border-top:8px solid transparent;border-bottom:8px solid transparent"></span></span></div>
+      </div>
+      <figcaption style="margin-top:12px;font-size:13.5px;line-height:1.55;color:#4E3A2E">« Le highlighter attrape la lumière sans paillettes. » <span style="color:#9C7434">@camille.skin</span></figcaption>
+    </figure>
+    <figure style="flex:0 0 clamp(196px,21vw,240px);min-width:0;scroll-snap-align:start;margin:0">
+      <div style="position:relative;aspect-ratio:9/16;background:#E6D8CB;overflow:hidden">
+        <img src="./images/influ-4.jpeg" alt="Cliente appliquant le gloss au miroir" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:rgba(251,246,241,.88)"><span style="display:block;width:0;height:0;margin-left:4px;border-left:13px solid #5C1329;border-top:8px solid transparent;border-bottom:8px solid transparent"></span></span></div>
+      </div>
+      <figcaption style="margin-top:12px;font-size:13.5px;line-height:1.55;color:#4E3A2E">« Effet verre sur les lèvres, zéro collant. » <span style="color:#9C7434">@sofia.glow</span></figcaption>
+    </figure>
+    <figure style="flex:0 0 clamp(196px,21vw,240px);min-width:0;scroll-snap-align:start;margin:0">
+      <div style="position:relative;aspect-ratio:9/16;background:#E6D8CB;overflow:hidden">
+        <img src="./images/influ-5.jpeg" alt="Cliente appliquant le teint à l éponge" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:rgba(251,246,241,.88)"><span style="display:block;width:0;height:0;margin-left:4px;border-left:13px solid #5C1329;border-top:8px solid transparent;border-bottom:8px solid transparent"></span></span></div>
+      </div>
+      <figcaption style="margin-top:12px;font-size:13.5px;line-height:1.55;color:#4E3A2E">« Base Grippy puis éponge&nbsp;: mon teint tient. » <span style="color:#9C7434">@jade.pro</span></figcaption>
+    </figure>
+    <figure style="flex:0 0 clamp(196px,21vw,240px);min-width:0;scroll-snap-align:start;margin:0">
+      <div style="position:relative;aspect-ratio:9/16;background:#E6D8CB;overflow:hidden">
+        <img src="./images/influ-6.jpeg" alt="Cliente appliquant le blush au doigt" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:rgba(251,246,241,.88)"><span style="display:block;width:0;height:0;margin-left:4px;border-left:13px solid #5C1329;border-top:8px solid transparent;border-bottom:8px solid transparent"></span></span></div>
+      </div>
+      <figcaption style="margin-top:12px;font-size:13.5px;line-height:1.55;color:#4E3A2E">« Blush au doigt, effet bonne mine immédiat. » <span style="color:#9C7434">@elsa.makeup</span></figcaption>
+    </figure>
+  </div>
+</section>
+</sc-if>
+
+<section style="padding:clamp(44px,6vw,78px) 24px">
+  <div style="max-width:1340px;margin:0 auto;background:#5C1329;color:#EFE0CC;padding:clamp(28px,4vw,52px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,40px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <p style="margin:0;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#DFC08A">Newsletter</p>
+      <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3.4vw,40px);line-height:1.12">Abonnez-vous à la newsletter</h2>
+      <p style="margin:0;max-width:46ch;font-size:14.5px;line-height:1.7;color:#CBB8A6">Nouveautés, offres réservées et conseils de nos maquilleuses — et −15 % dès votre inscription.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <input value="{{ email }}" onChange="{{ majEmail }}" placeholder="votre@email.com" style="flex:1 1 190px;min-width:0;padding:16px;border:1px solid rgba(239,224,204,.35);background:transparent;color:#FBF6F1;font-family:Jost,sans-serif;font-size:14px;outline:none" />
+        <button onClick="{{ sInscrire }}" style="padding:16px 30px;border:none;background:#EFE0CC;color:#1E0A1A;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer" style-hover="background:#DFC08A">S'inscrire</button>
+      </div>
+      <p style="margin:0;min-height:18px;font-size:12.5px;color:#DFC08A">{{ messageNewsletter }}</p>
+    </div>
+  </div>
+</section>
+
+<footer id="pro" style="background:#4A0F20;color:#D8C6B6;padding:clamp(40px,5vw,64px) 24px 26px">
+  <div style="max-width:1340px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px">
+      <div>
+        <p style="margin:0 0 16px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#DFC08A">Informations légales</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#cgv" style="color:#D8C6B6;font-size:13.5px">Conditions générales de vente</a>
+          <a href="#cgu" style="color:#D8C6B6;font-size:13.5px">Conditions générales d'utilisation</a>
+          <a href="#cookies" style="color:#D8C6B6;font-size:13.5px">Gestion des cookies</a>
+          <a href="#confidentialite" style="color:#D8C6B6;font-size:13.5px">Politique de confidentialité</a>
+          <a href="#mentions" style="color:#D8C6B6;font-size:13.5px">Mentions légales</a>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 16px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#DFC08A">Aide</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#aide" style="color:#D8C6B6;font-size:13.5px">Service client</a>
+          <a href="#aide" style="color:#D8C6B6;font-size:13.5px">Retours &amp; remboursements</a>
+          <a href="#aide" style="color:#D8C6B6;font-size:13.5px">Livraison &amp; suivi de commande</a>
+          <a href="#aide" style="color:#D8C6B6;font-size:13.5px">Nous contacter</a>
+          <a href="#pro" style="color:#D8C6B6;font-size:13.5px">Espace pro</a>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 16px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#DFC08A">FAQ</p>
+        <div style="display:flex;flex-direction:column">
+          <button data-q="1" onClick="{{ basculerFaq }}" style="display:flex;justify-content:space-between;gap:10px;text-align:left;padding:11px 0;border:none;border-bottom:1px solid rgba(216,198,182,.18);background:transparent;color:#D8C6B6;font-family:Jost,sans-serif;font-size:13.5px;cursor:pointer">Sous combien de temps ma commande arrive&nbsp;? <span style="color:#DFC08A">{{ signeFaq1 }}</span></button>
+          <sc-if value="{{ faq1 }}" hint-placeholder-val="{{ false }}"><p style="margin:8px 0 12px;font-size:12.5px;line-height:1.65;color:#A08D7E">2 à 4 jours ouvrés en France, offert dès 49 €. Suivi envoyé par e-mail.</p></sc-if>
+          <button data-q="2" onClick="{{ basculerFaq }}" style="display:flex;justify-content:space-between;gap:10px;text-align:left;padding:11px 0;border:none;border-bottom:1px solid rgba(216,198,182,.18);background:transparent;color:#D8C6B6;font-family:Jost,sans-serif;font-size:13.5px;cursor:pointer">Les produits sont-ils testés sur les animaux&nbsp;? <span style="color:#DFC08A">{{ signeFaq2 }}</span></button>
+          <sc-if value="{{ faq2 }}" hint-placeholder-val="{{ false }}"><p style="margin:8px 0 12px;font-size:12.5px;line-height:1.65;color:#A08D7E">Jamais. Toutes nos formules sont cruelty-free, fabriquées en France et en Italie.</p></sc-if>
+          <button data-q="3" onClick="{{ basculerFaq }}" style="display:flex;justify-content:space-between;gap:10px;text-align:left;padding:11px 0;border:none;border-bottom:1px solid rgba(216,198,182,.18);background:transparent;color:#D8C6B6;font-family:Jost,sans-serif;font-size:13.5px;cursor:pointer">Comment trouver ma teinte de fond de teint&nbsp;? <span style="color:#DFC08A">{{ signeFaq3 }}</span></button>
+          <sc-if value="{{ faq3 }}" hint-placeholder-val="{{ false }}"><p style="margin:8px 0 12px;font-size:12.5px;line-height:1.65;color:#A08D7E">Passez par l'analyseur de teint&nbsp;: six questions, une teinte et un anti-cernes recommandés.</p></sc-if>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 16px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#DFC08A">Suivez-nous</p>
+        <p style="margin:0 0 16px;font-size:13.5px;line-height:1.65">Instagram, TikTok et Facebook&nbsp;: <span style="color:#DFC08A">@cassandrabeauty</span></p>
+        <div style="display:flex;gap:10px">
+          <a href="#instagram" aria-label="Instagram" style="width:44px;height:44px;border:1px solid rgba(223,192,138,.4);display:flex;align-items:center;justify-content:center" style-hover="border-color:#DFC08A">
+            <svg width="17" height="17" viewBox="0 0 18 18" aria-hidden="true"><rect x="1.5" y="1.5" width="15" height="15" rx="4.5" fill="none" stroke="#DFC08A" stroke-width="1.2"></rect><circle cx="9" cy="9" r="3.6" fill="none" stroke="#DFC08A" stroke-width="1.2"></circle><circle cx="13.2" cy="4.8" r="1" fill="#DFC08A"></circle></svg>
+          </a>
+          <a href="#tiktok" aria-label="TikTok" style="width:44px;height:44px;border:1px solid rgba(223,192,138,.4);display:flex;align-items:center;justify-content:center" style-hover="border-color:#DFC08A">
+            <svg width="17" height="17" viewBox="0 0 18 18" aria-hidden="true"><circle cx="7" cy="12" r="3.4" fill="none" stroke="#DFC08A" stroke-width="1.2"></circle><line x1="10.4" y1="12" x2="10.4" y2="2.6" stroke="#DFC08A" stroke-width="1.2"></line><line x1="10.4" y1="2.6" x2="15" y2="5.4" stroke="#DFC08A" stroke-width="1.2"></line></svg>
+          </a>
+          <a href="#facebook" aria-label="Facebook" style="width:44px;height:44px;border:1px solid rgba(223,192,138,.4);display:flex;align-items:center;justify-content:center" style-hover="border-color:#DFC08A">
+            <svg width="17" height="17" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.4" fill="none" stroke="#DFC08A" stroke-width="1.2"></circle><line x1="9" y1="6" x2="9" y2="15" stroke="#DFC08A" stroke-width="1.2"></line><line x1="6.4" y1="9" x2="11.4" y2="9" stroke="#DFC08A" stroke-width="1.2"></line></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:34px;padding-top:20px;border-top:1px solid rgba(216,198,182,.18);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:11px;letter-spacing:.08em;color:#8E7A6C">
+      <span>© 2026 Cassandra Beauty — Paris</span>
+      <span>Paiement sécurisé · 3× sans frais dès 60 €</span>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ confirmVisible }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;top:0;right:0;z-index:85;width:min(100%,376px);margin:14px;background:#FBF6F1;border:1px solid #DFC08A;box-shadow:0 20px 50px rgba(30,10,26,.24);padding:20px 22px;display:flex;flex-direction:column;gap:12px;animation:cb-drop .2s ease both">
+  <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Ajouté au panier</p>
+  <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:21px;line-height:1.25">{{ confirmNom }}</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px">
+    <button onClick="{{ voirPanierDepuisConfirm }}" style="flex:1 1 130px;padding:13px;border:none;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer">Voir le panier</button>
+    <button onClick="{{ continuerAchats }}" style="flex:1 1 130px;padding:13px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer">Continuer mes achats</button>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ favOuvert }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:88;display:flex;justify-content:flex-end">
+  <div onClick="{{ fermerFav }}" style="position:absolute;inset:0;background:rgba(30,10,26,.45);animation:cb-fade .2s ease both"></div>
+  <aside style="position:relative;width:min(92vw,420px);height:100%;overflow-y:auto;background:#FBF6F1;border-left:1px solid #EADFD3;animation:cb-slide-r .26s cubic-bezier(.22,.7,.3,1) both;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid #EADFD3">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:21px">Vos favoris</span>
+      <button onClick="{{ fermerFav }}" aria-label="Fermer" style="width:40px;height:40px;border:1px solid #E3D4C5;border-radius:50%;background:#fff;color:#1E0A1A;font-size:17px;line-height:1;cursor:pointer">×</button>
+    </div>
+    <sc-if value="{{ favVide }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:34px 22px;display:flex;flex-direction:column;gap:14px">
+        <p style="margin:0;font-size:14.5px;line-height:1.7;color:#6A5344">Aucun favori pour l'instant. Touchez le cœur d'un produit pour l'enregistrer.</p>
+        <button onClick="{{ fermerFav }}" style="align-self:flex-start;padding:14px 24px;border:1px solid #B8446E;background:#fff;color:#B8446E;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer">Parcourir la boutique</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ favRempli }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ favorisListe }}" as="f">
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:18px 22px;border-bottom:1px solid #EADFD3">
+            <div style="width:66px;height:82px;flex:0 0 auto;background:#F4EBE2 center/cover no-repeat;background-image:{{ f.fond }}" role="img" aria-label="{{ f.nom }}"></div>
+            <div style="display:flex;flex-direction:column;gap:5px;min-width:0;flex:1">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:18px">{{ f.nom }}</span>
+              <span style="font-size:13px;color:#8A7263">{{ f.prix }}</span>
+              <button data-nom="{{ f.nom }}" onClick="{{ retirerFav }}" style="align-self:flex-start;padding:0;border:none;background:transparent;color:#B8446E;font-family:Jost,sans-serif;font-size:12px;text-decoration:underline;cursor:pointer">Retirer des favoris</button>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+  </aside>
+</div>
+</sc-if>
+
+<sc-if value="{{ panierOuvert }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:88;display:flex;justify-content:flex-end">
+  <div onClick="{{ fermerPanierT }}" style="position:absolute;inset:0;background:rgba(30,10,26,.45);animation:cb-fade .2s ease both"></div>
+  <aside style="position:relative;width:min(92vw,420px);height:100%;overflow-y:auto;background:#FBF6F1;border-left:1px solid #EADFD3;animation:cb-slide-r .26s cubic-bezier(.22,.7,.3,1) both;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid #EADFD3">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:21px">Votre panier</span>
+      <button onClick="{{ fermerPanierT }}" aria-label="Fermer" style="width:40px;height:40px;border:1px solid #E3D4C5;border-radius:50%;background:#fff;color:#1E0A1A;font-size:17px;line-height:1;cursor:pointer">×</button>
+    </div>
+    <sc-if value="{{ panierVide }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:34px 22px;display:flex;flex-direction:column;gap:14px">
+        <p style="margin:0;font-size:14.5px;line-height:1.7;color:#6A5344">Votre panier est vide pour le moment.</p>
+        <button onClick="{{ fermerPanierT }}" style="align-self:flex-start;padding:14px 24px;border:1px solid #5C1329;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer">Découvrir les best sellers</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ panierRempli }}" hint-placeholder-val="{{ false }}">
+      <div style="flex:1;display:flex;flex-direction:column">
+        <sc-for list="{{ lignes }}" as="l">
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:18px 22px;border-bottom:1px solid #EADFD3">
+            <div style="width:66px;height:82px;flex:0 0 auto;background:#F4EBE2 center/cover no-repeat;background-image:{{ l.fond }}" role="img" aria-label="{{ l.nom }}"></div>
+            <div style="display:flex;flex-direction:column;gap:5px;min-width:0;flex:1">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:18px">{{ l.nom }}</span>
+              <span style="font-size:12.5px;color:#8A7263">{{ l.sousTitre }}</span>
+              <button data-nom="{{ l.nom }}" onClick="{{ retirer }}" style="align-self:flex-start;padding:0;border:none;background:transparent;color:#B8446E;font-family:Jost,sans-serif;font-size:12px;text-decoration:underline;cursor:pointer">Retirer</button>
+            </div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:18px;white-space:nowrap;align-self:center">{{ l.total }}</span>
+          </div>
+        </sc-for>
+        <div style="margin-top:auto;padding:20px 22px;border-top:1px solid #EADFD3;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8A7263">Total</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:26px">{{ totalPanier }}</span>
+          </div>
+          <p style="margin:0;font-size:12px;line-height:1.6;color:#8A7263">Livraison offerte dès 49 € · 3× sans frais dès 60 €</p>
+          <button onClick="{{ fermerPanierT }}" style="padding:16px;border:none;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer">Passer commande</button>
+        </div>
+      </div>
+    </sc-if>
+  </aside>
+</div>
+</sc-if>
+
+<sc-if value="{{ popupVisible }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;background:rgba(30,10,26,.5);animation:cb-drop .24s ease both">
+  <div style="position:relative;width:min(100%,396px);flex:0 0 auto;background:#FBF6F1;border:1px solid #DFC08A;padding:26px 28px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;box-shadow:0 30px 70px rgba(30,10,26,.3)">
+    <button onClick="{{ fermerPopup }}" aria-label="Fermer" style="position:absolute;top:6px;right:6px;width:36px;height:36px;border:none;background:transparent;color:#8A7263;font-size:20px;line-height:1;cursor:pointer">×</button>
+    <svg viewBox="0 0 40 40" aria-hidden="true" style="display:block;width:22px;height:22px">
+      <path d="M20 0 L23.2 16.8 L40 20 L23.2 23.2 L20 40 L16.8 23.2 L0 20 L16.8 16.8 Z" fill="#B8913D"></path>
+    </svg>
+    <p style="margin:0;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:#9C7434">Offre de bienvenue</p>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(23px,2.6vw,29px);line-height:1.15">−15 % sur votre première commande</h2>
+    <p style="margin:0;max-width:32ch;font-size:13px;line-height:1.55;color:#6A5344">Livraison offerte comprise.</p>
+    <input value="{{ popPrenom }}" onChange="{{ majPopPrenom }}" placeholder="Prénom" style="width:100%;padding:12px 14px;border:1px solid #E3D4C5;background:#fff;color:#1E0A1A;font-family:Jost,sans-serif;font-size:14px;outline:none" />
+    <input value="{{ popEmail }}" onChange="{{ majPopEmail }}" placeholder="votre@email.com" style="width:100%;padding:12px 14px;border:1px solid #E3D4C5;background:#fff;color:#1E0A1A;font-family:Jost,sans-serif;font-size:14px;outline:none" />
+    <button onClick="{{ validerPopup }}" style="width:100%;margin-top:2px;padding:14px;border:none;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer" style-hover="background:#7A1A38">Je veux ma réduction</button>
+    <button onClick="{{ refuserPopup }}" style="border:none;background:transparent;color:#8A7263;font-family:Jost,sans-serif;font-size:12px;text-decoration:underline;cursor:pointer">Je ne veux pas en profiter</button>
+    <p style="margin:0;min-height:0;font-size:12px;color:#B8446E">{{ popMsg }}</p>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ toastVisible }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:80;padding:15px 28px;background:#5C1329;color:#EFE0CC;border:1px solid #9C7434;font-size:13px;letter-spacing:.06em;animation:cb-drop .2s ease both">{{ toast }}</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;afficherVideos&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;seuilMobile&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:1040,&quot;min&quot;:600,&quot;max&quot;:1200,&quot;step&quot;:20,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Navigation&quot;}}">
+class Component extends DCLogic {
+  state = { menu: null, lignes: [], tiroir: false, confirm: "", favoris: [], tiroirFav: false, email: "", newsletter: "", faq: null, toast: "", promo: 0, popup: false, popPrenom: "", popEmail: "", popMsg: "", largeur: typeof window !== "undefined" ? window.innerWidth : 1280, menuMobile: false, rechercheMobile: false, section: null };
+
+  constructor(props) {
+    super(props);
+    this.bsRef = React.createRef();
+    this.vidRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this._promo = setInterval(() => this.setState(s => ({ promo: s.promo === 0 ? 1 : 0 })), 30000);
+    this._popupT = setTimeout(() => {
+      try { if (localStorage.getItem("cb-popup-vu")) return; } catch (e) {}
+      this.setState({ popup: true });
+    }, 1200);
+    this._resize = () => {
+      const l = window.innerWidth;
+      if (l !== this.state.largeur) this.setState({ largeur: l, menu: null });
+    };
+    window.addEventListener("resize", this._resize);
+    this._resize();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this._t);
+    clearTimeout(this._popupT);
+    clearInterval(this._promo);
+    window.removeEventListener("resize", this._resize);
+  }
+
+  fermerPopup() {
+    try { localStorage.setItem("cb-popup-vu", "1"); } catch (e) {}
+    this.setState({ popup: false });
+  }
+
+  flash(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: "" }), 2000);
+  }
+
+  glisser(ref, dir) {
+    const el = ref.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * Math.max(240, el.clientWidth * 0.7), behavior: "smooth" });
+  }
+
+  renderVals() {
+    const favNoms = this.state.favoris.map(f => f.nom);
+    const mobile = this.state.largeur < (this.props.seuilMobile ?? 1040);
+    const sec = this.state.section;
+    const f = this.state.faq;
+
+    return {
+      mobile,
+      desktop: !mobile,
+      coeurBlushPoudre: favNoms.indexOf("Blush Poudre") >= 0 ? "♥" : "♡",
+      fondBlushPoudre: favNoms.indexOf("Blush Poudre") >= 0 ? "#FBE9F0" : "#fff",
+      bordBlushPoudre: favNoms.indexOf("Blush Poudre") >= 0 ? "#B8446E" : "#E3D4C5",
+      coeurBronzerPoudre: favNoms.indexOf("Bronzer Poudre") >= 0 ? "♥" : "♡",
+      fondBronzerPoudre: favNoms.indexOf("Bronzer Poudre") >= 0 ? "#FBE9F0" : "#fff",
+      bordBronzerPoudre: favNoms.indexOf("Bronzer Poudre") >= 0 ? "#B8446E" : "#E3D4C5",
+      coeurHighlighter: favNoms.indexOf("Highlighter") >= 0 ? "♥" : "♡",
+      fondHighlighter: favNoms.indexOf("Highlighter") >= 0 ? "#FBE9F0" : "#fff",
+      bordHighlighter: favNoms.indexOf("Highlighter") >= 0 ? "#B8446E" : "#E3D4C5",
+      coeurGlossBrillance: favNoms.indexOf("Gloss Brillance") >= 0 ? "♥" : "♡",
+      fondGlossBrillance: favNoms.indexOf("Gloss Brillance") >= 0 ? "#FBE9F0" : "#fff",
+      bordGlossBrillance: favNoms.indexOf("Gloss Brillance") >= 0 ? "#B8446E" : "#E3D4C5",
+      coeurBaseGrippy: favNoms.indexOf("Base Grippy") >= 0 ? "♥" : "♡",
+      fondBaseGrippy: favNoms.indexOf("Base Grippy") >= 0 ? "#FBE9F0" : "#fff",
+      bordBaseGrippy: favNoms.indexOf("Base Grippy") >= 0 ? "#B8446E" : "#E3D4C5",
+      promoA: this.state.promo === 0,
+      promoB: this.state.promo === 1,
+      popupVisible: this.state.popup,
+      popPrenom: this.state.popPrenom,
+      popEmail: this.state.popEmail,
+      popMsg: this.state.popMsg,
+      majPopPrenom: (e) => this.setState({ popPrenom: e.target.value }),
+      majPopEmail: (e) => this.setState({ popEmail: e.target.value }),
+      validerPopup: () => {
+        if (!/.+@.+\..+/.test(this.state.popEmail)) { this.setState({ popMsg: "Entrez une adresse e-mail valide." }); return; }
+        try { localStorage.setItem("cb-popup-vu", "1"); } catch (err) {}
+        this.setState({ popMsg: "", popup: false });
+        this.flash("Votre code −15 % arrive par e-mail");
+      },
+      refuserPopup: () => this.fermerPopup(),
+      fermerPopup: () => this.fermerPopup(),
+      menuPromos: !mobile && this.state.menu === "promos",
+      ouvrirPromos: () => this.setState({ menu: "promos" }),
+      menuBest: !mobile && this.state.menu === "best",
+      menuHistoire: !mobile && this.state.menu === "histoire",
+      ouvrirBest: () => this.setState({ menu: "best" }),
+      ouvrirHistoire: () => this.setState({ menu: "histoire" }),
+      large: this.state.largeur >= 1120,
+      afficherVideos: this.props.afficherVideos ?? true,
+      menuMobileOuvert: mobile && this.state.menuMobile,
+      rechercheOuverte: mobile && this.state.rechercheMobile,
+      sectionMaquillage: sec === "maquillage",
+      sectionNouveautes: sec === "nouveautes",
+      sectionServices: sec === "services",
+      signeMaquillage: sec === "maquillage" ? "−" : "+",
+      signeNouveautes: sec === "nouveautes" ? "−" : "+",
+      signeServices: sec === "services" ? "−" : "+",
+      nbPanier: this.state.lignes.reduce((t, l) => t + l.qte, 0),
+      nbFavoris: this.state.favoris.length,
+      email: this.state.email,
+      messageNewsletter: this.state.newsletter,
+      toast: this.state.toast,
+      toastVisible: this.state.toast !== "",
+      menuMaquillage: !mobile && this.state.menu === "maquillage",
+      menuNouveautes: !mobile && this.state.menu === "nouveautes",
+      menuServices: !mobile && this.state.menu === "services",
+      faq1: f === "1", faq2: f === "2", faq3: f === "3",
+      signeFaq1: f === "1" ? "−" : "+",
+      signeFaq2: f === "2" ? "−" : "+",
+      signeFaq3: f === "3" ? "−" : "+",
+      bsRef: this.bsRef,
+      vidRef: this.vidRef,
+      bsPrev: () => this.glisser(this.bsRef, -1),
+      bsNext: () => this.glisser(this.bsRef, 1),
+      vidPrev: () => this.glisser(this.vidRef, -1),
+      vidNext: () => this.glisser(this.vidRef, 1),
+      ouvrirMaquillage: () => this.setState({ menu: "maquillage" }),
+      ouvrirNouveautes: () => this.setState({ menu: "nouveautes" }),
+      ouvrirServices: () => this.setState({ menu: "services" }),
+      fermerMenu: () => this.setState({ menu: null }),
+      basculerMenu: () => this.setState(s => ({ menuMobile: !s.menuMobile, rechercheMobile: false })),
+      fermerMenuMobile: () => this.setState({ menuMobile: false, section: null }),
+      basculerRecherche: () => this.setState(s => ({ rechercheMobile: !s.rechercheMobile, menuMobile: false })),
+      basculerSection: (e) => {
+        const s2 = e.currentTarget.dataset.s;
+        this.setState(s => ({ section: s.section === s2 ? null : s2 }));
+      },
+      lignes: this.state.lignes.map(l => ({ nom: l.nom, fond: l.img ? 'url("' + l.img + '")' : "none", sousTitre: l.qte + " × " + l.prix.toFixed(2).replace(".", ",") + " €", total: (l.qte * l.prix).toFixed(2).replace(".", ",") + " €" })),
+      panierVide: this.state.lignes.length === 0,
+      panierRempli: this.state.lignes.length > 0,
+      totalPanier: this.state.lignes.reduce((t, l) => t + l.qte * l.prix, 0).toFixed(2).replace(".", ",") + " €",
+      panierOuvert: this.state.tiroir,
+      fermerPanierT: () => this.setState({ tiroir: false }),
+      retirer: (e) => {
+        const nom = e.currentTarget.dataset.nom;
+        this.setState(s => ({ lignes: s.lignes.filter(l => l.nom !== nom) }));
+      },
+      confirmVisible: this.state.confirm !== "",
+      confirmNom: this.state.confirm,
+      voirPanierDepuisConfirm: () => this.setState({ confirm: "", tiroir: true }),
+      continuerAchats: () => this.setState({ confirm: "" }),
+      ajouterPanier: (e) => {
+        const nom = e.currentTarget.dataset.nom || "Produit";
+        const p = Number(e.currentTarget.dataset.prix) || 0;
+        const img = e.currentTarget.dataset.img || "";
+        this.setState(st => {
+          const existe = st.lignes.find(l => l.nom === nom);
+          const lignes = existe
+            ? st.lignes.map(l => l.nom === nom ? { nom: l.nom, prix: l.prix, qte: l.qte + 1, img: l.img } : l)
+            : st.lignes.concat({ nom: nom, prix: p, qte: 1, img: img });
+          return { lignes: lignes, confirm: nom };
+        });
+      },
+      favorisListe: this.state.favoris.map(f => ({ nom: f.nom, prix: f.prix, fond: f.img ? 'url("' + f.img + '")' : "none" })),
+      coeurEntete: this.state.favoris.length > 0 ? "♥" : "♡",
+      fondFavEntete: this.state.favoris.length > 0 ? "#FBE9F0" : "#fff",
+      favVide: this.state.favoris.length === 0,
+      favRempli: this.state.favoris.length > 0,
+      favOuvert: this.state.tiroirFav,
+      fermerFav: () => this.setState({ tiroirFav: false }),
+      retirerFav: (e) => {
+        const nom = e.currentTarget.dataset.nom;
+        this.setState(st => ({ favoris: st.favoris.filter(f => f.nom !== nom) }));
+      },
+      ajouterFavori: (e) => {
+        const d = e.currentTarget.dataset;
+        const nom = d.nom || "Produit";
+        this.setState(st => st.favoris.some(f => f.nom === nom)
+          ? { favoris: st.favoris.filter(f => f.nom !== nom) }
+          : { favoris: st.favoris.concat({ nom: nom, img: d.img || "", prix: (Number(d.prix) || 0).toFixed(2).replace(".", ",") + " €" }) });
+      },
+      voirPanier: () => this.setState({ tiroir: true, menuMobile: false }),
+      voirFavoris: () => this.setState({ tiroirFav: true, menuMobile: false }),
+      basculerFaq: (e) => {
+        const q = e.currentTarget.dataset.q;
+        this.setState(s => ({ faq: s.faq === q ? null : q }));
+      },
+      majEmail: (e) => this.setState({ email: e.target.value }),
+      sInscrire: () => {
+        const ok = /.+@.+\..+/.test(this.state.email);
+        this.setState({ newsletter: ok ? "Merci ! Votre code −15 % arrive par e-mail." : "Entrez une adresse e-mail valide." });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
