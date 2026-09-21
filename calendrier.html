@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cassandra Beauty</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#FBF6F1;color:#1E0A1A;font-family:Jost,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
+::selection{background:#EEDCC5}
+@keyframes cb-drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+
+<div style="background:#5C1329;color:#EFE0CC">
+  <div style="max-width:1340px;margin:0 auto;padding:10px 24px;text-align:center;font-size:11px;letter-spacing:.16em;text-transform:uppercase">
+    Édition limitée — expédition sous 48 h
+  </div>
+</div>
+
+<header style="border-bottom:1px solid #EADFD3;background:#FBF6F1">
+  <div style="max-width:1340px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px">
+      <svg viewBox="0 0 40 40" aria-hidden="true" style="display:block;width:26px;height:26px;flex:0 0 auto">
+        <path d="M20 0 L23.2 16.8 L40 20 L23.2 23.2 L20 40 L16.8 23.2 L0 20 L16.8 16.8 Z" fill="#B8913D"></path>
+      </svg>
+      <span style="display:flex;flex-direction:column;gap:5px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);letter-spacing:.14em;text-transform:uppercase">Cassandra</span>
+        <span style="font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#9C7434">Beauty · Paris</span>
+      </span>
+    </a>
+    <a href="index.html" style="padding:13px 22px;border:1px solid #1E0A1A;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase">← Retour à la boutique</a>
+  </div>
+</header>
+
+<nav style="max-width:1340px;margin:0 auto;padding:16px 24px 0;font-size:11.5px;letter-spacing:.06em;color:#8A7263">
+  <a href="index.html" style="color:#8A7263">Accueil</a> · <a href="index.html" style="color:#8A7263">Nouveautés</a> · <span style="color:#1E0A1A">Calendrier de l'Avent</span>
+</nav>
+
+<section style="padding:clamp(20px,3vw,34px) 24px clamp(36px,5vw,60px)">
+  <div style="max-width:1340px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(26px,4vw,56px);align-items:start">
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <button data-v="0" onClick="{{ zoomer }}" aria-label="Agrandir l'image" style="position:relative;display:block;width:100%;padding:0;border:none;background:#521124;overflow:hidden;cursor:zoom-in">
+        <img src="./images/calendrier-avent.png" alt="Calendrier de l'Avent Cassandra Beauty ouvert, 24 tiroirs" style="display:block;width:100%;aspect-ratio:3/2;object-fit:cover;object-position:50% 40%" />
+      </button>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+        <button data-v="1" onClick="{{ zoomer }}" aria-label="Agrandir : Détail des tiroirs numérotés" style="position:relative;display:block;width:100%;aspect-ratio:3/2;padding:0;border:none;background:#521124;overflow:hidden;cursor:zoom-in"><img src="./images/calendrier-avent.png" alt="Détail des tiroirs numérotés" style="position:absolute;top:0;left:0;width:280%;height:280%;object-fit:cover;transform:translate(-42%,-8%)" /></button>
+        <button data-v="2" onClick="{{ zoomer }}" aria-label="Agrandir : Détail des produits inclus" style="position:relative;display:block;width:100%;aspect-ratio:3/2;padding:0;border:none;background:#521124;overflow:hidden;cursor:zoom-in"><img src="./images/calendrier-avent.png" alt="Détail des produits inclus" style="position:absolute;top:0;left:0;width:300%;height:300%;object-fit:cover;transform:translate(-12%,-62%)" /></button>
+        <button data-v="3" onClick="{{ zoomer }}" aria-label="Agrandir : Détail des pinceaux et de la palette" style="position:relative;display:block;width:100%;aspect-ratio:3/2;padding:0;border:none;background:#521124;overflow:hidden;cursor:zoom-in"><img src="./images/calendrier-avent.png" alt="Détail des pinceaux et de la palette" style="position:absolute;top:0;left:0;width:300%;height:300%;object-fit:cover;transform:translate(-68%,-58%)" /></button>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:18px;padding-top:clamp(0px,1vw,14px)">
+      <p style="margin:0;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9C7434">Édition limitée 2026</p>
+      <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,4.6vw,58px);line-height:1.04">Le Calendrier de l'Avent</h1>
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(17px,1.8vw,22px);color:#6A5344">Plus qu'un maquillage, une attitude.</p>
+
+      <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:#8A7263">
+        <span style="position:relative;display:inline-block;color:#E0D2C2;letter-spacing:2px">★★★★★<span style="position:absolute;top:0;left:0;width:96%;overflow:hidden;color:#9C7434;letter-spacing:2px">★★★★★</span></span>
+        <span>4,8 — 22 avis</span>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;padding:18px 0;border-top:1px solid #EADFD3;border-bottom:1px solid #EADFD3">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.6vw,42px);line-height:1">149,99 €</span>
+        <span style="font-size:14px;color:#8A7263;text-decoration:line-through">420,00 €</span>
+        <span style="padding:6px 12px;background:#F2E2E8;color:#B8446E;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase">Économisez 270 €</span>
+      </div>
+
+      <p style="margin:0;max-width:52ch;font-size:15px;line-height:1.75;color:#4E3A2E;text-wrap:pretty">Vingt-quatre cases&nbsp;: nos formats complets préférés, des exclusivités et les accessoires de la maison, dans un écrin qui reste sur la coiffeuse bien après décembre.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <button onClick="{{ ajouter }}" style="flex:1 1 220px;padding:18px 28px;border:1px solid #5C1329;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer" style-hover="background:#3A1330">Ajouter au panier · 149,99 €</button>
+        <button onClick="{{ favori }}" style="flex:0 0 auto;padding:18px 22px;border:1px solid #E3C3D2;background:{{ fondFav }};color:#B8446E;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer">{{ coeur }} Favori</button>
+      </div>
+      <p style="margin:0;font-size:12.5px;line-height:1.7;color:#8A7263">Paiement en 3× sans frais dès 60 € · Livraison offerte · Retour 30 jours</p>
+
+      <div style="display:flex;flex-direction:column;margin-top:8px">
+        <button data-q="1" onClick="{{ basculer }}" style="display:flex;justify-content:space-between;gap:12px;text-align:left;padding:15px 0;border:none;border-top:1px solid #EADFD3;background:transparent;color:#1E0A1A;font-family:Jost,sans-serif;font-size:13.5px;letter-spacing:.04em;cursor:pointer">Composition de l'écrin <span style="color:#9C7434">{{ signe1 }}</span></button>
+        <sc-if value="{{ ouvert1 }}" hint-placeholder-val="{{ false }}"><p style="margin:0 0 16px;font-size:13.5px;line-height:1.75;color:#6A5344;animation:cb-drop .18s ease both">18 produits en full size, 6 en format deluxe, une bougie parfumée, une pochette de 6 pinceaux yeux et un miroir de poche.</p></sc-if>
+        <button data-q="2" onClick="{{ basculer }}" style="display:flex;justify-content:space-between;gap:12px;text-align:left;padding:15px 0;border:none;border-top:1px solid #EADFD3;background:transparent;color:#1E0A1A;font-family:Jost,sans-serif;font-size:13.5px;letter-spacing:.04em;cursor:pointer">Formules <span style="color:#9C7434">{{ signe2 }}</span></button>
+        <sc-if value="{{ ouvert2 }}" hint-placeholder-val="{{ false }}"><p style="margin:0 0 16px;font-size:13.5px;line-height:1.75;color:#6A5344;animation:cb-drop .18s ease both">Des produits enrichis en soin (acide hyaluronique, squalane, huile de camélia). Fabriqué en France et en Italie, jamais testé sur les animaux.</p></sc-if>
+        <button data-q="3" onClick="{{ basculer }}" style="display:flex;justify-content:space-between;gap:12px;text-align:left;padding:15px 0;border:none;border-top:1px solid #EADFD3;border-bottom:1px solid #EADFD3;background:transparent;color:#1E0A1A;font-family:Jost,sans-serif;font-size:13.5px;letter-spacing:.04em;cursor:pointer">Livraison &amp; retours <span style="color:#9C7434">{{ signe3 }}</span></button>
+        <sc-if value="{{ ouvert3 }}" hint-placeholder-val="{{ false }}"><p style="margin:0 0 16px;font-size:13.5px;line-height:1.75;color:#6A5344;animation:cb-drop .18s ease both">Expédition sous 48 h, 2 à 4 jours ouvrés en France, offerte. Retour possible 30 jours si l'écrin n'a pas été ouvert.</p></sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#5C1329;color:#EFE0CC;padding:clamp(40px,5vw,72px) 24px">
+  <div style="max-width:1340px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:clamp(24px,3vw,38px)">
+      <div>
+        <p style="margin:0 0 12px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#DFC08A">Ce qu'il y a dedans</p>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,4vw,46px);line-height:1.05">Les 24 cases, une par une</h2>
+      </div>
+      <p style="margin:0;font-size:13px;letter-spacing:.06em;color:#A08D7E">Valeur cumulée 420 € · à vous pour 149,99 €</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:rgba(223,192,138,.28);border:1px solid rgba(223,192,138,.28)">
+      <sc-for list="{{ contenu }}" as="c" hint-placeholder-count="24">
+        <div style="background:#5C1329;padding:18px 20px;display:flex;flex-direction:column;gap:6px;min-height:118px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1;color:#DFC08A">{{ c.jour }}</span>
+          <span style="font-size:14px;line-height:1.45;color:#EFE0CC">{{ c.nom }}</span>
+          <span style="margin-top:auto;font-size:11.5px;letter-spacing:.06em;color:#9E8474">{{ c.detail }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#4A0F20;color:#8E7A6C;padding:28px 24px;text-align:center;font-size:11px;letter-spacing:.1em">
+  © 2026 Cassandra Beauty — Paris · <a href="index.html" style="color:#DFC08A">Retour à la boutique</a>
+</footer>
+
+<sc-if value="{{ auPanier }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:88;display:flex;justify-content:flex-end">
+  <div onClick="{{ fermerPanier }}" style="position:absolute;inset:0;background:rgba(30,10,26,.45)"></div>
+  <aside style="position:relative;width:min(92vw,420px);height:100%;overflow-y:auto;background:#FBF6F1;border-left:1px solid #EADFD3;display:flex;flex-direction:column;animation:cb-drop .24s ease both">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid #EADFD3">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:21px">Votre panier</span>
+      <button onClick="{{ fermerPanier }}" aria-label="Fermer" style="width:40px;height:40px;border:1px solid #E3D4C5;border-radius:50%;background:#fff;color:#1E0A1A;font-size:17px;line-height:1;cursor:pointer">×</button>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:18px 22px;border-bottom:1px solid #EADFD3">
+      <img src="./images/calendrier-avent.png" alt="Calendrier de l'Avent" style="width:66px;height:82px;flex:0 0 auto;object-fit:cover;background:#F4EBE2" />
+      <div style="display:flex;flex-direction:column;gap:5px;min-width:0;flex:1">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:18px">Calendrier de l'Avent</span>
+        <span style="font-size:12.5px;color:#8A7263">1 × 149,99 €</span>
+      </div>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:18px;white-space:nowrap;align-self:center">149,99 €</span>
+    </div>
+    <div style="margin-top:auto;padding:20px 22px;border-top:1px solid #EADFD3;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+        <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8A7263">Total</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:26px">149,99 €</span>
+      </div>
+      <p style="margin:0;font-size:12px;line-height:1.6;color:#8A7263">Livraison offerte · 3× sans frais dès 60 €</p>
+      <button onClick="{{ fermerPanier }}" style="padding:16px;border:none;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer">Passer commande</button>
+    </div>
+  </aside>
+</div>
+</sc-if>
+
+<sc-if value="{{ zoomVisible }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ fermerZoom }}" style="position:fixed;inset:0;z-index:95;display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px);background:rgba(30,10,26,.86);cursor:zoom-out;animation:cb-drop .2s ease both">
+  <button onClick="{{ fermerZoom }}" aria-label="Fermer" style="position:absolute;top:14px;right:16px;width:44px;height:44px;border:1px solid rgba(239,224,204,.4);background:transparent;color:#EFE0CC;font-size:20px;line-height:1;cursor:pointer">×</button>
+  <img src="./images/calendrier-avent.png" alt="Calendrier de l'Avent Cassandra Beauty" style="max-width:100%;max-height:100%;object-fit:contain;transform:{{ zoomTransform }}" />
+</div>
+</sc-if>
+
+<sc-if value="{{ toastVisible }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:80;padding:15px 28px;background:#5C1329;color:#EFE0CC;border:1px solid #9C7434;font-size:13px;animation:cb-drop .2s ease both">{{ toast }}</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { toast: "", ouvert: null, zoom: null, auPanier: false, fav: false };
+
+  contenu = [
+    { jour: "01", nom: "Base Grippy", detail: "Format complet · 30 ml" },
+    { jour: "02", nom: "Rouge à lèvres Cassis", detail: "Format complet" },
+    { jour: "03", nom: "Pinceau poudre doré", detail: "Accessoire signature" },
+    { jour: "04", nom: "Blush poudre", detail: "Format complet" },
+    { jour: "05", nom: "Crayon à lèvres Prune", detail: "Format complet" },
+    { jour: "06", nom: "Gloss", detail: "Format complet" },
+    { jour: "07", nom: "Houppette de velours", detail: "Accessoire" },
+    { jour: "08", nom: "Mascara", detail: "Format complet" },
+    { jour: "09", nom: "Highlighter 24k", detail: "Exclusivité écrin" },
+    { jour: "10", nom: "Beauty blender rosé", detail: "Accessoire" },
+    { jour: "11", nom: "Poudre libre", detail: "Format découverte · 12 g" },
+    { jour: "12", nom: "Crayon à sourcils", detail: "Format complet" },
+    { jour: "13", nom: "Miroir de poche doré", detail: "Accessoire" },
+    { jour: "14", nom: "Blush liquide", detail: "Format complet · 35 ml" },
+    { jour: "15", nom: "Gloss transparent", detail: "Format découverte" },
+    { jour: "16", nom: "Palette 8 ombres Bordeaux", detail: "Exclusivité écrin" },
+    { jour: "17", nom: "Pinceau blush liquide", detail: "Accessoire signature" },
+    { jour: "18", nom: "Bougie parfumée Cassandra", detail: "Exclusivité écrin · 180 g" },
+    { jour: "19", nom: "Rouge à lèvres Nude Rosé", detail: "Format complet" },
+    { jour: "20", nom: "Bronzer crème", detail: "Format découverte" },
+    { jour: "21", nom: "Spray fixateur", detail: "Format découverte · 50 ml" },
+    { jour: "22", nom: "Pochette 6 pinceaux yeux", detail: "Accessoire · valeur 50 €" },
+    { jour: "23", nom: "Concealer", detail: "Format complet" },
+    { jour: "24", nom: "Fond de teint", detail: "Format complet · 30 ml" }
+  ];
+
+  componentWillUnmount() { clearTimeout(this._t); }
+
+  flash(m) {
+    this.setState({ toast: m });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: "" }), 2000);
+  }
+
+  renderVals() {
+    const o = this.state.ouvert;
+    const vues = ["none", "scale(2.4) translate(-8%,14%)", "scale(2.6) translate(14%,-22%)", "scale(2.6) translate(-16%,-18%)"];
+    return {
+      contenu: this.contenu,
+      zoomVisible: this.state.zoom !== null,
+      zoomTransform: this.state.zoom === null ? "none" : vues[this.state.zoom],
+      zoomer: (e) => this.setState({ zoom: Number(e.currentTarget.dataset.v) }),
+      fermerZoom: () => this.setState({ zoom: null }),
+      toast: this.state.toast,
+      toastVisible: this.state.toast !== "",
+      ouvert1: o === "1", ouvert2: o === "2", ouvert3: o === "3",
+      signe1: o === "1" ? "−" : "+",
+      signe2: o === "2" ? "−" : "+",
+      signe3: o === "3" ? "−" : "+",
+      basculer: (e) => {
+        const q = e.currentTarget.dataset.q;
+        this.setState(s => ({ ouvert: s.ouvert === q ? null : q }));
+      },
+      auPanier: this.state.auPanier,
+      coeur: this.state.fav ? "♥" : "♡",
+      fondFav: this.state.fav ? "#FBE9F0" : "#fff",
+      ajouter: () => { this.setState({ auPanier: true }); this.flash("Calendrier de l'Avent ajouté au panier"); },
+      fermerPanier: () => this.setState({ auPanier: false }),
+      favori: () => {
+        const nouveau = !this.state.fav;
+        this.setState({ fav: nouveau });
+        this.flash(nouveau ? "Ajouté à vos favoris" : "Retiré de vos favoris");
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cassandra Beauty</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#FBF6F1;color:#1E0A1A;font-family:Jost,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
+::selection{background:#EEDCC5}
+@keyframes cb-drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+
+<div style="background:#5C1329;color:#EFE0CC">
+  <div style="max-width:1340px;margin:0 auto;padding:10px 20px;text-align:center;font-size:clamp(9.5px,1.05vw,11px);letter-spacing:.14em;text-transform:uppercase">
+    Tous nos teints sont enrichis en soin — 40 % d'actifs minimum
+  </div>
+</div>
+
+<header style="border-bottom:1px solid #EADFD3;background:#FBF6F1">
+  <div style="max-width:1340px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px">
+      <svg viewBox="0 0 40 40" aria-hidden="true" style="display:block;width:26px;height:26px;flex:0 0 auto">
+        <path d="M20 0 L23.2 16.8 L40 20 L23.2 23.2 L20 40 L16.8 23.2 L0 20 L16.8 16.8 Z" fill="#B8913D"></path>
+      </svg>
+      <span style="display:flex;flex-direction:column;gap:5px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);letter-spacing:.14em;text-transform:uppercase">Cassandra</span>
+        <span style="font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#9C7434">Beauty · Paris</span>
+      </span>
+    </a>
+    <a href="index.html" style="padding:13px 22px;border:1px solid #5C1329;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase">← Retour à la boutique</a>
+  </div>
+</header>
+
+<section style="padding:clamp(30px,4vw,54px) 24px clamp(24px,3vw,36px)">
+  <div style="max-width:1340px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
+    <p style="margin:0;font-size:11.5px;letter-spacing:.06em;color:#8A7263"><a href="index.html" style="color:#8A7263">Accueil</a> · <a href="index.html" style="color:#8A7263">Maquillage</a> · <span style="color:#1E0A1A">Le teint</span></p>
+    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.6vw,56px);line-height:1.04">Le teint</h1>
+    <p style="margin:0;max-width:60ch;font-size:15px;line-height:1.75;color:#4E3A2E;text-wrap:pretty">Fonds de teint et anti-cernes, du voile léger à la couvrance totale. Chaque formule contient acide hyaluronique et squalane&nbsp;: la couleur soigne au lieu d'assécher.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <button data-f="tout" onClick="{{ filtrer }}" style="padding:12px 22px;border:1px solid {{ bordTout }};background:{{ fondTout }};color:{{ encreTout }};font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer">Tout</button>
+      <button data-f="Fond de teint" onClick="{{ filtrer }}" style="padding:12px 22px;border:1px solid {{ bordFdt }};background:{{ fondFdt }};color:{{ encreFdt }};font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer">Fonds de teint</button>
+      <button data-f="Concealer" onClick="{{ filtrer }}" style="padding:12px 22px;border:1px solid {{ bordCon }};background:{{ fondCon }};color:{{ encreCon }};font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer">Concealers</button>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 24px clamp(44px,6vw,78px)">
+  <div style="max-width:1340px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(256px,1fr));gap:20px">
+    <sc-for list="{{ produits }}" as="p" hint-placeholder-count="6">
+      <article style="background:#fff;border:1px solid #EADFD3;display:flex;flex-direction:column">
+        <div style="padding:20px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1;border-top:3px solid #5C1329">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+            <span style="padding:6px 11px;background:#F4EBE2;color:#5C1329;font-size:9px;letter-spacing:.2em;text-transform:uppercase">{{ p.famille }}</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#9C7434">{{ p.couvrance }}</span>
+          </div>
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">{{ p.nom }}</h2>
+          <p style="margin:0;font-size:13.5px;line-height:1.65;color:#6A5344">{{ p.desc }}</p>
+          <p style="margin:0;font-size:12px;letter-spacing:.06em;color:#8A7263">{{ p.teintes }}</p>
+          <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">{{ p.prix }}</p>
+          <button data-nom="{{ p.nom }}" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section style="background:#5C1329;color:#EFE0CC;padding:clamp(34px,4.5vw,60px) 24px">
+  <div style="max-width:1000px;margin:0 auto;text-align:center;display:flex;flex-direction:column;gap:14px">
+    <p style="margin:0;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#DFC08A">Vous hésitez&nbsp;?</p>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3.6vw,40px);line-height:1.1">L'analyseur de teint trouve votre teinte en 60 secondes</h2>
+    <p style="margin:0 auto;max-width:54ch;font-size:14.5px;line-height:1.75;color:#CBB8A6">Six questions sur votre carnation, vos sous-tons et le fini que vous aimez&nbsp;: nous vous recommandons un fond de teint et l'anti-cernes assorti.</p>
+    <a href="index.html" style="align-self:center;margin-top:6px;padding:15px 30px;background:#EFE0CC;color:#5C1329;font-size:11px;letter-spacing:.2em;text-transform:uppercase" style-hover="background:#DFC08A">Commencer l'analyse</a>
+  </div>
+</section>
+
+<footer style="background:#4A0F20;color:#8E7A6C;padding:28px 24px;text-align:center;font-size:11px;letter-spacing:.1em">
+  © 2026 Cassandra Beauty — Paris · <a href="index.html" style="color:#DFC08A">Retour à la boutique</a>
+</footer>
+
+<sc-if value="{{ toastVisible }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:80;padding:15px 28px;background:#5C1329;color:#EFE0CC;border:1px solid #9C7434;font-size:13px;animation:cb-drop .2s ease both">{{ toast }}</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filtre: "tout", toast: "" };
+
+  catalogue = [
+    { famille: "Fond de teint", couvrance: "Couvrance modulable", nom: "Voile Infini", desc: "Fluide léger à construire, fini satiné naturel qui tient la journée.", teintes: "38 teintes · 30 ml", prix: "39,00 €" },
+    { famille: "Fond de teint", couvrance: "Haute couvrance", nom: "Second Souffle", desc: "Pour les rougeurs et les cicatrices, sans effet masque ni transfert.", teintes: "30 teintes · 30 ml", prix: "42,00 €" },
+    { famille: "Fond de teint", couvrance: "Voile léger", nom: "Peau Nue", desc: "Soin teinté à 60 % d'actifs, fini frais, parfait pour la semaine.", teintes: "16 teintes · 40 ml", prix: "32,00 €" },
+    { famille: "Concealer", couvrance: "Haute couvrance", nom: "Couvrant Absolu", desc: "Crème dense pour les cernes marqués, ne s'installe pas dans les plis.", teintes: "24 teintes · 7 ml", prix: "26,00 €" },
+    { famille: "Concealer", couvrance: "Couvrance modulable", nom: "Lumière Douce", desc: "Texture fluide et lumineuse pour réveiller le regard au quotidien.", teintes: "24 teintes · 7 ml", prix: "24,00 €" },
+    { famille: "Concealer", couvrance: "Correcteur", nom: "Neutralisant Pêche", desc: "Corrige le bleu des cernes avant l'anti-cernes, à poser en fine touche.", teintes: "4 nuances · 6 ml", prix: "21,00 €" }
+  ];
+
+  componentWillUnmount() { clearTimeout(this._t); }
+
+  flash(m) {
+    this.setState({ toast: m });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: "" }), 2000);
+  }
+
+  renderVals() {
+    const f = this.state.filtre;
+    const actif = (k) => f === k;
+    const styles = (k) => ({
+      bord: actif(k) ? "#5C1329" : "#E3D4C5",
+      fond: actif(k) ? "#5C1329" : "#fff",
+      encre: actif(k) ? "#EFE0CC" : "#1E0A1A"
+    });
+    const a = styles("tout"), b = styles("Fond de teint"), c = styles("Concealer");
+    return {
+      produits: f === "tout" ? this.catalogue : this.catalogue.filter(p => p.famille === f),
+      bordTout: a.bord, fondTout: a.fond, encreTout: a.encre,
+      bordFdt: b.bord, fondFdt: b.fond, encreFdt: b.encre,
+      bordCon: c.bord, fondCon: c.fond, encreCon: c.encre,
+      toast: this.state.toast,
+      toastVisible: this.state.toast !== "",
+      filtrer: (e) => this.setState({ filtre: e.currentTarget.dataset.f }),
+      ajouter: (e) => this.flash(e.currentTarget.dataset.nom + " ajouté au panier")
+    };
+  }
+}
+</script>
+</body>
+</html>
