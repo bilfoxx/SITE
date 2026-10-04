@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cassandra Beauty</title>
+<script src="./panier.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -130,7 +131,12 @@ class Component extends DCLogic {
       toast: this.state.toast,
       toastVisible: this.state.toast !== "",
       filtrer: (e) => this.setState({ filtre: e.currentTarget.dataset.f }),
-      ajouter: (e) => this.flash(e.currentTarget.dataset.nom + " ajouté au panier")
+      ajouter: (e) => {
+        const nom = e.currentTarget.dataset.nom;
+        const p = this.catalogue.find(x => x.nom === nom);
+        CBPanier.ajouter(nom, p ? Number(p.prix.replace(",", ".").replace(/[^\d.]/g, "")) : 0, "");
+        this.flash(nom + " ajouté au panier");
+      }
     };
   }
 }

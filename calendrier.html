@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cassandra Beauty</title>
+<script src="./panier.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -221,7 +222,7 @@ class Component extends DCLogic {
       auPanier: this.state.auPanier,
       coeur: this.state.fav ? "♥" : "♡",
       fondFav: this.state.fav ? "#FBE9F0" : "#fff",
-      ajouter: () => { this.setState({ auPanier: true }); this.flash("Calendrier de l'Avent ajouté au panier"); },
+      ajouter: () => { CBPanier.ajouter("Calendrier de l'Avent", 149.99, "./images/calendrier-avent.png"); this.setState({ auPanier: true }); this.flash("Calendrier de l'Avent ajouté au panier"); },
       fermerPanier: () => this.setState({ auPanier: false }),
       favori: () => {
         const nouveau = !this.state.fav;
