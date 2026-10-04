@@ -62,8 +62,8 @@ a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
 
         <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px;padding:18px 0;border-top:1px solid #EADFD3;border-bottom:1px solid #EADFD3">
           <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.6vw,42px);line-height:1">45,99 € <span style="font-family:Jost,sans-serif;font-size:12px;letter-spacing:.14em;color:#8A7263">TTC</span></span>
-          <span style="font-size:14px;color:#8A7263">Valeur réelle <span style="text-decoration:line-through">69,99 € TTC</span></span>
-          <span style="padding:6px 12px;background:#F2E2E8;color:#B8446E;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase">Économisez 24 €</span>
+          <span style="font-size:14px;color:#8A7263">Valeur réelle <span style="text-decoration:line-through">64,98 € TTC</span></span>
+          <span style="padding:6px 12px;background:#F2E2E8;color:#B8446E;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase">Économisez 18,99 €</span>
         </div>
 
         <div style="display:flex;flex-direction:column">
@@ -82,12 +82,35 @@ a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
           </div>
         </div>
 
-        <button data-nom="Le Coffret de Noël" data-prix="45.99" data-img="./images/coffret-noel.jpg" onClick="{{ ajouter }}" style="padding:18px 28px;border:1px solid #5C1329;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer" style-hover="background:#3A1330">Ajouter au panier · 45,99 €</button>
+        <div style="display:flex;flex-direction:column;gap:14px;padding-top:14px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A7263">Principes actifs</p>
+            <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:12px;color:#6A5344;font-size:13.5px;line-height:1.6">
+              <li><strong>Acide hyaluronique</strong> — contribue à maintenir l'hydratation de la peau et apporte un effet repulpant. Il agit à différents niveaux de l'épiderme pour favoriser une hydratation en profondeur.</li>
+              <li><strong>Vitamine C</strong> — apporte de l'éclat, aide à réduire l'apparence des taches et limite leur apparition.</li>
+              <li><strong>Céramide</strong> — renforce la barrière cutanée et limite la perte en eau.</li>
+            </ul>
+          </div>
+          <div style="padding:14px 0;border-top:1px solid #EADFD3;display:flex;flex-direction:column;gap:10px">
+            <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A7263">Utilisation</p>
+            <p style="margin:0;font-size:13.5px;line-height:1.6;color:#6A5344">Une routine complète facile d'utilisation qui peut être utilisée le matin avant le maquillage et/ou le soir selon les besoins et les habitudes du consommateur.</p>
+          </div>
+          <div style="padding:14px 0;border-top:1px solid #EADFD3;display:flex;flex-direction:column;gap:10px">
+            <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A7263">Bénéfices</p>
+            <p style="margin:0;font-size:13.5px;line-height:1.6;color:#6A5344">Le coffret propose une routine complète associant hydratation, éclat et protection de la barrière cutanée.</p>
+          </div>
+        </div>
 
-        <div style="padding:18px 20px;background:#F4EBE2;border-left:2px solid #111;display:flex;flex-direction:column;gap:8px">
-          <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#111">En exclusivité chez Sephora France</p>
-          <p style="margin:0;font-size:14px;line-height:1.75;color:#4E3A2E;text-wrap:pretty">Du 1<sup>er</sup> septembre au 5 janvier, dans les magasins Sephora et sur le site internet de Sephora. Le coffret reste également disponible ici, sur notre site, pendant toute cette période.</p>
-          <a href="partenaire.html" style="align-self:flex-start;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Notre partenariat →</a>
+        <button data-nom="Le Coffret de Noël" data-prix="45.99" data-img="./images/coffret-noel.jpg" onClick="{{ ajouter }}" style="margin-top:20px;padding:18px 28px;border:1px solid #5C1329;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer" style-hover="background:#3A1330">Ajouter au panier · 45,99 €</button>
+
+        <div style="padding:18px 20px;background:#F4EBE2;border-left:2px solid #111;display:flex;flex-direction:column;gap:10px;margin-top:20px">
+          <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#111">Où le trouver</p>
+          <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:#4E3A2E;font-size:13.5px;line-height:1.6">
+            <li>En magasins Sephora</li>
+            <li>Sur le site internet de Sephora</li>
+            <li>Sur notre site pendant cette période (1<sup>er</sup> septembre au 5 janvier)</li>
+          </ul>
+          <a href="partenaire.html" style="align-self:flex-start;margin-top:4px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Notre partenariat →</a>
         </div>
       </div>
     </div>

@@ -152,23 +152,9 @@ a:hover{color:#9C7434}
         <span style="display:block;padding:14px clamp(9px,1vw,16px);white-space:nowrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid transparent;cursor:default" style-hover="border-bottom:1px solid #9C7434">Nouveautés</span>
         <sc-if value="{{ menuNouveautes }}" hint-placeholder-val="{{ false }}">
           <div style="position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid #EADFD3;box-shadow:0 24px 48px rgba(30,10,26,.10);animation:cb-drop .18s ease both">
-            <div style="max-width:1340px;margin:0 auto;padding:38px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:34px">
-              <div style="display:flex;flex-direction:column;gap:12px">
-                <p style="margin:0 0 6px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Édition limitée</p>
-                <a href="calendrier.html" style="font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:.02em">Le Calendrier de l'Avent</a>
-                <p style="margin:0;font-size:13px;line-height:1.6;color:#6A5344">24 cases, 24 gestes enrichis en soin. 149,99 € — valeur 420 €.</p>
-                <a href="coffret-noel.html" style="margin-top:10px;font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:.02em">Le Coffret de Noël</a>
-                <p style="margin:0;font-size:13px;line-height:1.6;color:#6A5344">Sérum, crème et contour des yeux. 45,99 € — valeur 69,99 €. En exclusivité chez Sephora France.</p>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:11px">
-                <p style="margin:0 0 6px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9C7434">Tout juste arrivé</p>
-                <span style="font-size:14px;color:#4E3A2E;cursor:default">Blush liquide</span>
-                <span style="font-size:14px;color:#4E3A2E;cursor:default">Huile à lèvres</span>
-                <span style="font-size:14px;color:#4E3A2E;cursor:default">Poudre compacte</span>
-              </div>
-              <div style="position:relative;min-height:190px;background:#F3E8DC">
-                <image-slot id="cb-menu-nouveautes" shape="rect" src="./images/trio-nouveautes.png" placeholder="IMG 02 — trio de produits dorés"></image-slot>
-              </div>
+            <div style="max-width:1340px;margin:0 auto;padding:38px 24px;display:flex;flex-direction:column;gap:20px">
+              <a href="calendrier.html" style="font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.02em">Le Calendrier de l'Avent</a>
+              <a href="coffret-noel.html" style="font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.02em">Le Coffret de Noël</a>
             </div>
           </div>
         </sc-if>
@@ -219,7 +205,19 @@ a:hover{color:#9C7434}
         </sc-if>
       </div>
 
-      <a href="soins.html" style="padding:14px clamp(9px,1vw,16px);white-space:nowrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid transparent" style-hover="border-bottom:1px solid #9C7434">Soins</a>
+      <div onMouseEnter="{{ ouvrirSoins }}" onMouseLeave="{{ fermerMenu }}" style="position:static">
+        <span style="display:block;padding:14px clamp(9px,1vw,16px);white-space:nowrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid transparent;cursor:default" style-hover="border-bottom:1px solid #9C7434">Soins</span>
+        <sc-if value="{{ menuSoins }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid #EADFD3;box-shadow:0 24px 48px rgba(30,10,26,.10);animation:cb-drop .18s ease both">
+            <div style="max-width:1340px;margin:0 auto;padding:38px 24px;display:flex;flex-direction:column;gap:14px">
+              <span style="font-size:14px;color:#4E3A2E">Sérum booster d'hydratation et éclat</span>
+              <span style="font-size:14px;color:#4E3A2E">Crème booster hydratation et éclat</span>
+              <span style="font-size:14px;color:#4E3A2E">Contour des yeux hydratation et anti-fatigue</span>
+              <a href="soins.html" style="margin-top:6px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Tout découvrir →</a>
+            </div>
+          </div>
+        </sc-if>
+      </div>
 
       <div onMouseEnter="{{ ouvrirBest }}" onMouseLeave="{{ fermerMenu }}" style="position:static">
         <a href="#bestsellers" style="display:block;padding:14px clamp(9px,1vw,16px);white-space:nowrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid transparent" style-hover="border-bottom:1px solid #9C7434">Best sellers</a>
@@ -318,9 +316,16 @@ a:hover{color:#9C7434}
         <div style="display:flex;flex-direction:column;gap:13px;padding:16px 0 18px 12px;border-bottom:1px solid #EADFD3;animation:cb-drop .18s ease both">
           <a href="calendrier.html" style="font-family:'Cormorant Garamond',serif;font-size:19px">Le Calendrier de l'Avent</a>
           <a href="coffret-noel.html" style="font-family:'Cormorant Garamond',serif;font-size:19px">Le Coffret de Noël</a>
-          <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Blush liquide</span>
-          <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Huile à lèvres</span>
-          <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Poudre compacte</span>
+        </div>
+      </sc-if>
+
+      <button data-s="soins" onClick="{{ basculerSection }}" style="display:flex;align-items:center;justify-content:space-between;padding:17px 0;border:none;border-bottom:1px solid #EADFD3;background:transparent;color:#1E0A1A;font-family:Jost,sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-align:left;cursor:pointer">Soins <span style="color:#9C7434;font-size:15px">{{ sectionSoins ? '−' : '+' }}</span></button>
+      <sc-if value="{{ sectionSoins }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:13px;padding:16px 0 18px 12px;border-bottom:1px solid #EADFD3;animation:cb-drop .18s ease both">
+          <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Sérum booster d'hydratation et éclat</span>
+          <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Crème booster hydratation et éclat</span>
+          <span style="font-size:14.5px;color:#4E3A2E;cursor:default">Contour des yeux hydratation et anti-fatigue</span>
+          <a href="soins.html" style="margin-top:6px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Tout découvrir →</a>
         </div>
       </sc-if>
 
@@ -973,6 +978,7 @@ class Component extends DCLogic {
       rechercheOuverte: mobile && this.state.rechercheMobile,
       sectionMaquillage: sec === "maquillage",
       sectionNouveautes: sec === "nouveautes",
+      sectionSoins: sec === "soins",
       sectionServices: sec === "services",
       signeMaquillage: sec === "maquillage" ? "−" : "+",
       signeNouveautes: sec === "nouveautes" ? "−" : "+",
@@ -985,6 +991,7 @@ class Component extends DCLogic {
       toastVisible: this.state.toast !== "",
       menuMaquillage: !mobile && this.state.menu === "maquillage",
       menuNouveautes: !mobile && this.state.menu === "nouveautes",
+      menuSoins: !mobile && this.state.menu === "soins",
       menuServices: !mobile && this.state.menu === "services",
       faq1: f === "1", faq2: f === "2", faq3: f === "3",
       signeFaq1: f === "1" ? "−" : "+",
@@ -998,6 +1005,7 @@ class Component extends DCLogic {
       vidNext: () => this.glisser(this.vidRef, 1),
       ouvrirMaquillage: () => this.setState({ menu: "maquillage" }),
       ouvrirNouveautes: () => this.setState({ menu: "nouveautes" }),
+      ouvrirSoins: () => this.setState({ menu: "soins" }),
       ouvrirServices: () => this.setState({ menu: "services" }),
       fermerMenu: () => this.setState({ menu: null }),
       basculerMenu: () => this.setState(s => ({ menuMobile: !s.menuMobile, rechercheMobile: false })),
