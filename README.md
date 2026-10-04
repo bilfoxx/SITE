@@ -13,3 +13,8 @@ Site statique. Ouvrir `index.html`.
 - teint.html — catégorie Le teint
 - histoire.html — Notre histoire
 - produits.html — tous les produits
+- soins.html — sérum, crème, contour des yeux
+- coffret-noel.html — fiche du Coffret de Noël
+- partenaire.html — marque partenaire (Sephora France)
+
+Le panier est partagé entre les pages via `panier.js` (localStorage).

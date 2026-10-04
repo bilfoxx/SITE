@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Coffret de Noël — Cassandra Beauty</title>
+<script src="./panier.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#FBF6F1;color:#1E0A1A;font-family:Jost,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
+::selection{background:#EEDCC5}
+@keyframes cb-drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+
+<div style="background:#5C1329;color:#EFE0CC">
+  <div style="max-width:1340px;margin:0 auto;padding:10px 20px;text-align:center;font-size:clamp(9.5px,1.05vw,11px);letter-spacing:.14em;text-transform:uppercase">
+    Le Coffret de Noël, en exclusivité chez Sephora France
+  </div>
+</div>
+
+<header style="border-bottom:1px solid #EADFD3;background:#FBF6F1">
+  <div style="max-width:1340px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px">
+      <svg viewBox="0 0 40 40" aria-hidden="true" style="display:block;width:26px;height:26px;flex:0 0 auto">
+        <path d="M20 0 L23.2 16.8 L40 20 L23.2 23.2 L20 40 L16.8 23.2 L0 20 L16.8 16.8 Z" fill="#B8913D"></path>
+      </svg>
+      <span style="display:flex;flex-direction:column;gap:5px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);letter-spacing:.14em;text-transform:uppercase">Cassandra</span>
+        <span style="font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#9C7434">Beauty · Paris</span>
+      </span>
+    </a>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <a href="index.html" style="padding:13px 22px;border:1px solid #5C1329;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase">← Retour à la boutique</a>
+      <button onClick="{{ voirPanier }}" style="display:flex;align-items:center;gap:9px;padding:13px 18px;border:1px solid #1E0A1A;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer">Panier <span style="color:#DFC08A">{{ nbPanier }}</span></button>
+    </div>
+  </div>
+</header>
+
+<section style="padding:clamp(24px,3vw,40px) 24px clamp(44px,6vw,78px)">
+  <div style="max-width:1340px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(20px,3vw,30px)">
+    <p style="margin:0;font-size:11.5px;letter-spacing:.06em;color:#8A7263"><a href="index.html" style="color:#8A7263">Accueil</a> · <span style="color:#8A7263">Nouveautés</span> · <span style="color:#1E0A1A">Le Coffret de Noël</span></p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(26px,4vw,60px);align-items:start">
+      <div style="position:relative;aspect-ratio:3/4;background:#F3E8DC;overflow:hidden">
+        <img src="./images/coffret-noel.jpg" alt="Le Coffret de Noël Cassandra Beauty ouvert : crème, sérum et contour des yeux dans un écrin bordeaux, devant un sapin" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span style="position:absolute;top:0;left:0;padding:8px 13px;background:#111;color:#fff;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase">Exclusivité Sephora France</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9C7434">Nouveauté · Édition limitée</p>
+        <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,4.6vw,58px);line-height:1.04">Le Coffret de Noël</h1>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(17px,1.8vw,22px);color:#6A5344">La routine hydratation et éclat, dans son écrin de fête.</p>
+
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px;padding:18px 0;border-top:1px solid #EADFD3;border-bottom:1px solid #EADFD3">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.6vw,42px);line-height:1">45,99 € <span style="font-family:Jost,sans-serif;font-size:12px;letter-spacing:.14em;color:#8A7263">TTC</span></span>
+          <span style="font-size:14px;color:#8A7263">Valeur réelle <span style="text-decoration:line-through">69,99 € TTC</span></span>
+          <span style="padding:6px 12px;background:#F2E2E8;color:#B8446E;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase">Économisez 24 €</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column">
+          <p style="margin:0 0 10px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A7263">Composition</p>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid #EADFD3">
+            <img src="./images/serum-eclat.jpg" alt="" style="width:52px;height:64px;object-fit:cover;flex:0 0 auto" />
+            <span style="flex:1;font-size:14.5px;line-height:1.5">Sérum booster d'hydratation et éclat</span><span style="white-space:nowrap;color:#8A7263;font-size:13.5px">30 ml</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid #EADFD3">
+            <img src="./images/creme-hydratante.jpg" alt="" style="width:52px;height:64px;object-fit:cover;flex:0 0 auto" />
+            <span style="flex:1;font-size:14.5px;line-height:1.5">Crème booster hydratation et éclat</span><span style="white-space:nowrap;color:#8A7263;font-size:13.5px">30 ml</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid #EADFD3;border-bottom:1px solid #EADFD3">
+            <img src="./images/contour-yeux.jpg" alt="" style="width:52px;height:64px;object-fit:cover;flex:0 0 auto" />
+            <span style="flex:1;font-size:14.5px;line-height:1.5">Contour des yeux hydratation et anti-fatigue</span><span style="white-space:nowrap;color:#8A7263;font-size:13.5px">15 ml</span>
+          </div>
+        </div>
+
+        <button data-nom="Le Coffret de Noël" data-prix="45.99" data-img="./images/coffret-noel.jpg" onClick="{{ ajouter }}" style="padding:18px 28px;border:1px solid #5C1329;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer" style-hover="background:#3A1330">Ajouter au panier · 45,99 €</button>
+
+        <div style="padding:18px 20px;background:#F4EBE2;border-left:2px solid #111;display:flex;flex-direction:column;gap:8px">
+          <p style="margin:0;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#111">En exclusivité chez Sephora France</p>
+          <p style="margin:0;font-size:14px;line-height:1.75;color:#4E3A2E;text-wrap:pretty">Du 1<sup>er</sup> septembre au 5 janvier, dans les magasins Sephora et sur le site internet de Sephora. Le coffret reste également disponible ici, sur notre site, pendant toute cette période.</p>
+          <a href="partenaire.html" style="align-self:flex-start;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Notre partenariat →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#4A0F20;color:#8E7A6C;padding:28px 24px;text-align:center;font-size:11px;letter-spacing:.1em">
+  © 2026 Cassandra Beauty — Paris · <a href="index.html" style="color:#DFC08A">Retour à la boutique</a>
+</footer>
+
+<sc-if value="{{ panierOuvert }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:88;display:flex;justify-content:flex-end">
+  <div onClick="{{ fermerPanier }}" style="position:absolute;inset:0;background:rgba(30,10,26,.45)"></div>
+  <aside style="position:relative;width:min(92vw,420px);height:100%;overflow-y:auto;background:#FBF6F1;border-left:1px solid #EADFD3;display:flex;flex-direction:column;animation:cb-drop .24s ease both">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid #EADFD3">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:21px">Votre panier</span>
+      <button onClick="{{ fermerPanier }}" aria-label="Fermer" style="width:40px;height:40px;border:1px solid #E3D4C5;border-radius:50%;background:#fff;color:#1E0A1A;font-size:17px;line-height:1;cursor:pointer">×</button>
+    </div>
+    <sc-if value="{{ panierVide }}" hint-placeholder-val="{{ true }}">
+      <p style="margin:0;padding:34px 22px;font-size:14.5px;line-height:1.7;color:#6A5344">Votre panier est vide pour le moment.</p>
+    </sc-if>
+    <sc-if value="{{ panierRempli }}" hint-placeholder-val="{{ false }}">
+      <div style="flex:1;display:flex;flex-direction:column">
+        <sc-for list="{{ lignes }}" as="l">
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:18px 22px;border-bottom:1px solid #EADFD3">
+            <div style="width:66px;height:82px;flex:0 0 auto;background:#F4EBE2 center/cover no-repeat;background-image:{{ l.fond }}" role="img" aria-label="{{ l.nom }}"></div>
+            <div style="display:flex;flex-direction:column;gap:5px;min-width:0;flex:1">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:18px">{{ l.nom }}</span>
+              <span style="font-size:12.5px;color:#8A7263">{{ l.sousTitre }}</span>
+              <button data-nom="{{ l.nom }}" onClick="{{ retirer }}" style="align-self:flex-start;padding:0;border:none;background:transparent;color:#B8446E;font-family:Jost,sans-serif;font-size:12px;text-decoration:underline;cursor:pointer">Retirer</button>
+            </div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:18px;white-space:nowrap;align-self:center">{{ l.total }}</span>
+          </div>
+        </sc-for>
+        <div style="margin-top:auto;padding:20px 22px;border-top:1px solid #EADFD3;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8A7263">Total</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:26px">{{ totalPanier }}</span>
+          </div>
+          <p style="margin:0;font-size:12px;line-height:1.6;color:#8A7263">Livraison offerte dès 49 € · 3× sans frais dès 60 €</p>
+          <button onClick="{{ fermerPanier }}" style="padding:16px;border:none;background:#5C1329;color:#EFE0CC;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer">Passer commande</button>
+        </div>
+      </div>
+    </sc-if>
+  </aside>
+</div>
+</sc-if>
+
+<sc-if value="{{ toastVisible }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:80;width:max-content;max-width:calc(100% - 32px);padding:15px 28px;background:#5C1329;color:#EFE0CC;border:1px solid #9C7434;font-size:13px;text-align:center;animation:cb-drop .2s ease both">{{ toast }}</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lignes: CBPanier.lire(), tiroir: false, toast: "" };
+
+  componentDidMount() {
+    this._recharger = () => this.setState({ lignes: CBPanier.lire() });
+    window.addEventListener("pageshow", this._recharger);
+    window.addEventListener("storage", this._recharger);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this._t);
+    window.removeEventListener("pageshow", this._recharger);
+    window.removeEventListener("storage", this._recharger);
+  }
+
+  flash(m) {
+    this.setState({ toast: m });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: "" }), 2200);
+  }
+
+  renderVals() {
+    return Object.assign(CBPanier.vue(this.state.lignes), {
+      toast: this.state.toast,
+      toastVisible: this.state.toast !== "",
+      panierOuvert: this.state.tiroir,
+      voirPanier: () => this.setState({ tiroir: true }),
+      fermerPanier: () => this.setState({ tiroir: false }),
+      ajouter: (e) => {
+        const d = e.currentTarget.dataset;
+        this.setState({ lignes: CBPanier.ajouter(d.nom, Number(d.prix) || 0, d.img) });
+        this.flash(d.nom + " ajouté au panier");
+      },
+      retirer: (e) => this.setState({ lignes: CBPanier.retirer(e.currentTarget.dataset.nom) })
+    });
+  }
+}
+</script>
+</body>
+</html>

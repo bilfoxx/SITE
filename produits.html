@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cassandra Beauty</title>
+<script src="./panier.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -61,7 +62,7 @@ a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
         <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Joues</p>
         <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Blush Poudre</h2>
         <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">29,99 €</p>
-        <button data-nom="Blush Poudre" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+        <button data-nom="Blush Poudre" data-prix="29.99" data-img="./images/blush-poudre.jpg" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
       </div>
     </article>
 
@@ -73,7 +74,7 @@ a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
         <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Joues</p>
         <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Bronzer Poudre</h2>
         <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">29,99 €</p>
-        <button data-nom="Bronzer Poudre" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+        <button data-nom="Bronzer Poudre" data-prix="29.99" data-img="./images/bronzer.jpg" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
       </div>
     </article>
 
@@ -85,7 +86,7 @@ a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
         <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Joues</p>
         <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Highlighter</h2>
         <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">34,99 €</p>
-        <button data-nom="Highlighter" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+        <button data-nom="Highlighter" data-prix="34.99" data-img="./images/enlumineur.jpg" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
       </div>
     </article>
 
@@ -97,7 +98,7 @@ a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
         <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Lèvres</p>
         <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Gloss Brillance</h2>
         <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">22,99 €</p>
-        <button data-nom="Gloss Brillance" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+        <button data-nom="Gloss Brillance" data-prix="22.99" data-img="./images/gloss.jpg" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
       </div>
     </article>
 
@@ -109,7 +110,7 @@ a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
         <p style="margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Teint</p>
         <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.25">Base Grippy</h2>
         <p style="margin:auto 0 0;font-family:'Cormorant Garamond',serif;font-size:22px">25,99 €</p>
-        <button data-nom="Base Grippy" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
+        <button data-nom="Base Grippy" data-prix="25.99" data-img="./images/base-grippy.jpg" onClick="{{ ajouter }}" style="margin-top:8px;padding:14px;border:1px solid #5C1329;background:#fff;color:#5C1329;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:#5C1329;color:#EFE0CC">Ajouter au panier</button>
       </div>
     </article>
 
@@ -117,6 +118,13 @@ a{color:#1E0A1A;text-decoration:none}a:hover{color:#9C7434}
       <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:22px">Le Calendrier de l'Avent</p>
       <p style="margin:0;font-size:14px;line-height:1.7;color:#6A5344">24 cases, valeur 420 €, à vous pour 149,99 €.</p>
       <a href="calendrier.html" style="margin-top:6px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Voir la fiche →</a>
+    </article>
+
+    <article style="background:#F4EBE2;border:1px solid #EADFD3;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:30px 26px;min-height:240px">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:22px">Le Coffret de Noël</p>
+      <p style="margin:0;font-size:14px;line-height:1.7;color:#6A5344">Sérum, crème et contour des yeux, valeur 69,99 €, à vous pour 45,99 €. En exclusivité chez Sephora France.</p>
+      <a href="coffret-noel.html" style="margin-top:6px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Voir la fiche →</a>
+      <a href="soins.html" style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7434">Les soins à l'unité →</a>
     </article>
   </div>
 </section>
@@ -139,7 +147,7 @@ class Component extends DCLogic {
       toast: this.state.toast,
       toastVisible: this.state.toast !== "",
       ajouter: (e) => {
-        this.setState({ toast: e.currentTarget.dataset.nom + " ajouté au panier" });
+        const d = e.currentTarget.dataset;
         clearTimeout(this._t);
         this._t = setTimeout(() => this.setState({ toast: "" }), 2000);
       }
